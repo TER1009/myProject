@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+  margin: 10px;
+}
+
+.textInput {
+  padding-bottom: 5px !important;
+  width: 200px;
+}
