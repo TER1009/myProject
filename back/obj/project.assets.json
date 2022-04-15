@@ -1411,11 +1411,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\myFront\\back\\back.csproj",
+      "projectUniqueName": "D:\\GitHub\\myProject\\back\\back.csproj",
       "projectName": "back",
-      "projectPath": "D:\\GitHub\\myFront\\back\\back.csproj",
+      "projectPath": "D:\\GitHub\\myProject\\back\\back.csproj",
       "packagesPath": "C:\\Users\\Ladav\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\myFront\\back\\obj\\",
+      "outputPath": "D:\\GitHub\\myProject\\back\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1497,7 +1497,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -7,31 +7,31 @@ using back.interfaces;
 
 namespace back.repository
 {
-    public class charactersRepository : iBaseRepository<characters>
+    public class charactersRepository : iBaseRepository<contentpages>
     {
         private dbContextFWebsite dbContext;
         public charactersRepository()
         {
             dbContext = new dbContextFWebsite();
         }
-        public void create(characters characters)
+        public void create(contentpages page)
         {
-            dbContext.Characters.Add(characters);
+            dbContext.Characters.Add(page);
             dbContext.SaveChanges();
         }
 
-        public void update(characters characters)
+        public void update(contentpages page)
         {
-            dbContext.Characters.Update(characters);
+            dbContext.Characters.Update(page);
             dbContext.SaveChanges();
         }
 
-        public List<characters> getAll()
+        public List<contentpages> getAll()
         {
             return dbContext.Characters.ToList();
         }
 
-        public characters getById(Guid id)
+        public contentpages getById(Guid id)
         {
             var list = getAll();
             foreach (var item in list)
@@ -41,8 +41,8 @@ namespace back.repository
             return null;
         }
 
-        public void delete(characters characters){
-            dbContext.Characters.Remove(characters);
+        public void delete(contentpages page){
+            dbContext.Characters.Remove(page);
             dbContext.SaveChanges();
         }
     }

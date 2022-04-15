@@ -5,7 +5,7 @@ namespace back.services
 {
     public class pagesValidService
     {
-        public static bool check(charactersDTO character)
+        public static bool check(contentPagesDTO character)
         {
             if (character.description != "" &&
             character.typeContent != "")

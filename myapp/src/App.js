@@ -11,6 +11,7 @@ import Registr from "./pages/registration";
 import { Container } from "react-bootstrap";
 import Header from "./components/header";
 import "./styles/App.css";
+import CreatePage from "./pages/createPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/manga" element={<Manga />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/reg" element={<Registr />} />
+          <Route path="/createPage" element={<CreatePage />} />
         </Routes>
       </BrowserRouter>
     </Container>

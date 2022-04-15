@@ -1,10 +1,11 @@
+using System.Buffers.Text;
 using System.IO;
 using System;
 using Microsoft.AspNetCore.Http;
 
 namespace back.DTO
 {
-    public class charactersDTO
+    public class contentPagesDTO
     {
 
         public Guid id { get; set; }
@@ -13,5 +14,17 @@ namespace back.DTO
         public Guid lastEditor { get; set; }
         public string description { get; set; }
         public IFormFile img { get; set; }
+    }
+
+    public class contentPageView
+    {
+        public string typeContent { get; set; }
+        public string description { get; set; }
+        public IFormFile files { get; set; }
+    }
+
+    public class uploadImg
+    {
+        public IFormFile files { get; set; }
     }
 }

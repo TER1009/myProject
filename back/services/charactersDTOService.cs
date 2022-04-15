@@ -6,51 +6,51 @@ using back.models;
 
 namespace back.services
 {
-    public class charactersDTOService
+    public class contentPagesDTOService
     {
         charactersRepository repository;
-        characters character;
-        public charactersDTOService()
+        contentpages page;
+        public contentPagesDTOService()
         {
             repository = new charactersRepository();
-            character = new characters();
+            page = new contentpages();
         }
 
-        public characters returnEntity(charactersDTO character)
+        public contentpages returnEntity(contentPagesDTO contentpage)
         {
-            return new characters()
+            return new contentpages()
             {
-                id = character.id,
-                typeContent = character.typeContent,
-                ownerClientId = character.ownerClientId,
-                lastEditor = character.lastEditor,
-                description = character.description
+                id = contentpage.id,
+                typeContent = contentpage.typeContent,
+                ownerClientId = contentpage.ownerClientId,
+                lastEditor = contentpage.lastEditor,
+                description = contentpage.description
 
             };
         }
 
-        public charactersDTO returnDTO(characters character)
+        public contentPagesDTO returnDTO(contentpages contentpage)
         {
-            return new charactersDTO()
+            return new contentPagesDTO()
             {
-                id = character.id,
-                typeContent = character.typeContent,
-                ownerClientId = character.ownerClientId,
-                lastEditor = character.lastEditor,
-                description = character.description
+                id = contentpage.id,
+                typeContent = contentpage.typeContent,
+                ownerClientId = contentpage.ownerClientId,
+                lastEditor = contentpage.lastEditor,
+                description = contentpage.description
                 
             };
         }
 
-        public void create(charactersDTO character)
+        public void create(contentPagesDTO contentpage)
         {
-            repository.create(returnEntity(character));
+            repository.create(returnEntity(contentpage));
         }
 
-        public List<charactersDTO> getAll()
+        public List<contentPagesDTO> getAll()
         {
             var list = repository.getAll();
-            List<charactersDTO> list2 = new List<charactersDTO>();
+            List<contentPagesDTO> list2 = new List<contentPagesDTO>();
             for (int i = 0; i < list.Count; i++)
             {
                 list2.Add(returnDTO(list[i]));

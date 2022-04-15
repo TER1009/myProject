@@ -21,7 +21,7 @@ namespace back.Controllers
 
         private readonly IConfiguration _configuration;
         private readonly userService _service;
-        private charactersDTOService dto = new charactersDTOService();
+        private contentPagesDTOService dto = new contentPagesDTOService();
         private userDTOService userDto = new userDTOService();
         public pages(IConfiguration configuration, userService service)
         {
@@ -30,35 +30,48 @@ namespace back.Controllers
         }
 
         [HttpPost(nameof(postPage))]
-        public async Task<IActionResult> postPage([FromBody] charactersDTO character)
+        public async Task<IActionResult> postPage([FromForm] contentPageView pageContent)
         {
-            if (pagesValidService.check(character))
+            var cookie = Request.Cookies["id"];
+            var refresh = Request.Cookies["refresh"];
+            var page = new contentPagesDTO()
+            {
+                typeContent = pageContent.typeContent,
+                description = pageContent.description,
+                img = pageContent.files
+            };
+            if (pagesValidService.check(page))
             {
                 var list = dto.getAll();
-                if (list == null) character.id = Guid.NewGuid();
-                else character.id = Guid.NewGuid();
-                var cookie = Request.Cookies["id"];
+                if (list == null) page.id = Guid.NewGuid();
+                else page.id = Guid.NewGuid();
                 if (cookie == null)
                 {
-                    var refresh = Request.Cookies["refresh"];
                     var Jwt = new JwtSecurityTokenHandler();
+                    Console.WriteLine("HERE " + refresh);
                     var data = Jwt.ReadJwtToken(refresh).Claims.First(claim => claim.Type == "email");
                     var user = userDto.getByEmailReturnPersonalDataClientDto(data.Value);
-                    character.ownerClientId = user.id;
-                    character.lastEditor = user.id;
+                    page.ownerClientId = user.id;
+                    page.lastEditor = user.id;
                 }
                 else
                 {
                     var Jwt = new JwtSecurityTokenHandler();
                     var data = Jwt.ReadJwtToken(cookie).Claims.First(claim => claim.Type == "id");
                     var user = userDto.getByIDPersonalDataDTO(new Guid(data.Value));
-                    character.ownerClientId = user.id;
-                    character.lastEditor = user.id;
+                    page.ownerClientId = user.id;
+                    page.lastEditor = user.id;
                 }
-                //dto.create(character);
+                dto.create(page);
                 return Ok("true");
             }
             else return BadRequest("Не все поля заполнены");
+        }
+
+        [HttpGet(nameof(getCharacters))]
+        public async Task<IActionResult> getCharacters()
+        {
+            return Ok(dto.getAll());
         }
     }
 }
