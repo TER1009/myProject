@@ -1,0 +1,13 @@
+.containerEditor {
+  margin-top: 1% !important;
+  width: 80% !important;
+  height: 100% !important;
+}
+
+.quill {
+  background-color: white !important;
+}
+
+.post{
+    margin-left: 75% !important;
+}

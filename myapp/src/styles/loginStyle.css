@@ -1,0 +1,28 @@
+.login {
+  display: flex;
+  flex-flow: column;
+  /* justify-content: flex-start; */
+  width: 150px;
+}
+
+.post {
+  margin: 10px 10px 10px 10px;
+  width: 160px;
+  padding: 0px 0px 0px 0px;
+  height: 40px;
+}
+.auth {
+  margin: 10px 10px 0px -5px;
+  width: 155px;
+  height: 12vh;
+}
+
+.auth button {
+  padding-top: 0vh;
+}
+
+.toReg {
+  text-decoration: none;
+  color: white;
+  margin-left: 3.5vw;
+}
