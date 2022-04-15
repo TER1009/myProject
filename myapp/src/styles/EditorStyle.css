@@ -8,6 +8,39 @@
   background-color: white !important;
 }
 
-.post{
-    margin-left: 75% !important;
+.post {
+  margin-left: 75% !important;
+}
+
+.downloadPicture {
+  width: 80% !important;
+  margin-left: 10% !important;
+  margin-top: 5% !important;
+}
+
+.typeContent {
+  width: 80% !important;
+  margin-left: 10% !important;
+  margin-top: 7% !important;
+}
+
+.textDownloadPicture {
+  color: white;
+}
+
+.imgContainer {
+  max-width: 200px !important;
+  max-height: 300px !important;
+  margin-left: 10% !important;
+  margin-top: 1% !important;
+  color: white;
+}
+
+.img {
+  max-width: 200px !important;
+  max-height: 300px !important;
+}
+
+.type {
+  padding-top: 5% !important;
 }

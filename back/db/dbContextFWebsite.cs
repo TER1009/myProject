@@ -3,9 +3,10 @@ using back.models;
 
 namespace back.db
 {
-    public class dbContextFWebsite: DbContext
+    public class dbContextFWebsite : DbContext
     {
         public DbSet<client> Users { get; set; }
+        public DbSet<characters> Characters { get; set; }
         public dbContextFWebsite()
         {
             Database.EnsureCreated();   // создаем базу данных при первом обращении

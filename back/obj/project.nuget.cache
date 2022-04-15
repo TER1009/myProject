@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P2n8y2wAv2f2yL7GPAVbjKN9oYbsWdFZQRikYecF6PMwKvu7a30v5nNFz3kWmxOfj/ws1KO737SHwoK/8oEbzg==",
+  "dgSpecHash": "Y7mm6qUaBaoj47DDldHjm6t7Rbyf283KbEU1DylvZiP93yb4yczdIhRqblgHMNstj3ckEFIu261+0ZR+WEKgZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\back.csproj",
+  "projectFilePath": "D:\\GitHub\\myFront\\back\\back.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ladav\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.2\\microsoft.aspnetcore.authentication.jwtbearer.5.0.2.nupkg.sha512",
@@ -28,6 +28,7 @@
     "C:\\Users\\Ladav\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.14.1\\microsoft.identitymodel.tokens.6.14.1.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Ladav\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\npgsql\\5.0.10\\npgsql.5.0.10.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.10\\npgsql.entityframeworkcore.postgresql.5.0.10.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
@@ -37,6 +38,7 @@
     "C:\\Users\\Ladav\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "C:\\Users\\Ladav\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.14.1\\system.identitymodel.tokens.jwt.6.14.1.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "C:\\Users\\Ladav\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"

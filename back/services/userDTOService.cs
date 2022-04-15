@@ -57,7 +57,7 @@ namespace back.services
 
         public List<clientDTO> returnListDTO()
         {
-            var list = repository.getaAll();
+            var list = repository.getAll();
             List<clientDTO> listDTO = new List<clientDTO>();
             for (int i = 0; i < list.Count; i++)
             {
@@ -74,7 +74,7 @@ namespace back.services
 
         public List<clientPersonalDataDTO> returnListPersonalDTO()
         {
-            var list = repository.getaAll();
+            var list = repository.getAll();
             List<clientPersonalDataDTO> listDTO = new List<clientPersonalDataDTO>();
             for (int i = 0; i < list.Count; i++)
             {
@@ -114,7 +114,7 @@ namespace back.services
 
         public clientPersonalDataDTO getByEmailReturnPersonalDataClientDto(string email)
         {
-            var list = repository.getaAll();
+            var list = repository.getAll();
             var returnUser = new clientPersonalDataDTO();
             foreach (var user in list)
             {
@@ -132,7 +132,7 @@ namespace back.services
 
         public clientDTO getByEmailReturnClientDto(string email)
         {
-            var list = repository.getaAll();
+            var list = repository.getAll();
             var returnUser = new clientDTO();
             foreach (var user in list)
             {
@@ -189,7 +189,7 @@ namespace back.services
             {
                 var result = new clientPersonalDataDTO();
 
-                var listAll = repository.getaAll();
+                var listAll = repository.getAll();
                 foreach (var item in listAll)
                 {
                     if (string.Equals(item.email, userDto.email) && string.Equals(item.password, userDto.password))

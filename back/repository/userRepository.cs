@@ -1,11 +1,9 @@
-using System.Globalization;
 using back.models;
 using System.Collections.Generic;
 using System;
 using back.db;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using back.DTO;
+using back.interfaces;
 
 namespace back.repository
 {
@@ -21,12 +19,12 @@ namespace back.repository
             dbContext.Users.Add(client);
             dbContext.SaveChanges();
         }
-        public void updute(client client)
+        public void update(client client)
         {
             dbContext.Users.Update(client);
             dbContext.SaveChanges();
         }
-        public List<client> getaAll()
+        public List<client> getAll()
         {
             return dbContext.Users.ToList();
         }

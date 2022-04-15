@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\back.csproj": {}
+    "D:\\GitHub\\myFront\\back\\back.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\back.csproj": {
+    "D:\\GitHub\\myFront\\back\\back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\back.csproj",
+        "projectUniqueName": "D:\\GitHub\\myFront\\back\\back.csproj",
         "projectName": "back",
-        "projectPath": "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\back.csproj",
+        "projectPath": "D:\\GitHub\\myFront\\back\\back.csproj",
         "packagesPath": "C:\\Users\\Ladav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ladav\\Desktop\\OnePieceSite\\back\\obj\\",
+        "outputPath": "D:\\GitHub\\myFront\\back\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,6 +65,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
