@@ -42,7 +42,11 @@ export default class Characters extends Component {
         <Container className="linkToCreate">
           <Link className="createPage" to={"/createPage"}>Создать страничку</Link>
         </Container>
-        <Container className="pages"></Container>
+        <Container className="pages">
+          {/* {for(let i = 0; i<this.state.pages.length; i++){
+            return <Page/>
+          }} */}
+        </Container>
       </>
     );
   }

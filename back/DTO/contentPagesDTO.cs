@@ -13,18 +13,13 @@ namespace back.DTO
         public Guid ownerClientId { get; set; }
         public Guid lastEditor { get; set; }
         public string description { get; set; }
-        public IFormFile img { get; set; }
+        public IFormFile files { get; set; }
     }
 
     public class contentPageView
     {
         public string typeContent { get; set; }
         public string description { get; set; }
-        public IFormFile files { get; set; }
-    }
-
-    public class uploadImg
-    {
         public IFormFile files { get; set; }
     }
 }

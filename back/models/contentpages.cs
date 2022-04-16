@@ -11,6 +11,6 @@ namespace back.models
         public Guid ownerClientId { get; set; }
         public Guid lastEditor { get; set; }
         public string description { get; set; }
-        //public IFormFile picture { get; set; }
+        public IFormFile files { get; set; }
     }
 }

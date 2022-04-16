@@ -38,7 +38,7 @@ namespace back.Controllers
             {
                 typeContent = pageContent.typeContent,
                 description = pageContent.description,
-                img = pageContent.files
+                files = pageContent.files
             };
             if (pagesValidService.check(page))
             {
