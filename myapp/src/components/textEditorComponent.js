@@ -54,17 +54,12 @@ export default class TextEditorComponent extends Component {
   };
 
   postPage = async () => {
-    // let data = await {
-    //   typeContent: this.state.typeContent,
-    //   description: this.state.text,
-    //   img: this.state.file,
-    // };
     let file = this.state.file;
     let data = new FormData();
     data.append("typeContent", this.state.typeContent);
     data.append("description", this.state.text);
     data.append("files", file);
-    console.log(data.get("img"));
+    console.log(data);
     await fetch("https://localhost:5001/api/pages/postPage", {
       method: "POST",
       credentials: "include",
@@ -100,7 +95,7 @@ export default class TextEditorComponent extends Component {
         response.text();
       })
       .then((result) => {
-        console.log(result);
+        console.log("editor result " + result);
       });
   };
 

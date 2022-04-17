@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.IO;
 
 
 namespace back.Controllers
@@ -38,8 +40,15 @@ namespace back.Controllers
             {
                 typeContent = pageContent.typeContent,
                 description = pageContent.description,
-                files = pageContent.files
             };
+            if (pageContent.files.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    pageContent.files.CopyTo(ms);
+                    page.files = ms.ToArray();
+                }
+            }
             if (pagesValidService.check(page))
             {
                 var list = dto.getAll();
@@ -71,6 +80,7 @@ namespace back.Controllers
         [HttpGet(nameof(getCharacters))]
         public async Task<IActionResult> getCharacters()
         {
+            Console.WriteLine(dto.getAll()[0]);
             return Ok(dto.getAll());
         }
     }

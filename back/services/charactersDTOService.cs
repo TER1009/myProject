@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Collections.Generic;
 using System;
 using back.repository;
@@ -24,7 +25,8 @@ namespace back.services
                 typeContent = contentpage.typeContent,
                 ownerClientId = contentpage.ownerClientId,
                 lastEditor = contentpage.lastEditor,
-                description = contentpage.description
+                description = contentpage.description,
+                picture = contentpage.files
 
             };
         }
@@ -38,7 +40,7 @@ namespace back.services
                 ownerClientId = contentpage.ownerClientId,
                 lastEditor = contentpage.lastEditor,
                 description = contentpage.description
-                
+
             };
         }
 
