@@ -19,24 +19,24 @@ export default class Characters extends Component {
   getPages = async () => {
     await fetch("https://localhost:5001/api/pages/getCharacters", {
       method: "GET",
-      mode: "cors",
+      //mode: "cors",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        response.json();
-      })
-      .then((result) => {
-        console.log("getPages " + result[0].id);
+    }).then((response) => {
+      console.log("getPages " + response);
+      response.json().then((result) => {
         this.setState(
           (this.state = {
             pages: result,
             get: false,
           })
         );
+        let out = result;
+        if (typeof result == "object") console.log(btoa(out[0].pic));
       });
+    });
   };
 
   componentDidMount() {
@@ -55,7 +55,13 @@ export default class Characters extends Component {
         <Container className="pages">
           {this.state.pages != null ? (
             this.state.pages.map((page) => (
-              <Page img={page.files} text={page.description} />
+              <Page
+                key={page.id}
+                id={page.id}
+                text={page.description}
+                picture={page.pic}
+                type={page.typePic}
+              />
             ))
           ) : (
             <></>
@@ -64,4 +70,12 @@ export default class Characters extends Component {
       </>
     );
   }
+}
+{
+  /* <Page
+                key={page.id}
+                text={page.description}
+                picture={page.pic}
+                type={page.typePic}
+              /> */
 }

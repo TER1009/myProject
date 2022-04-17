@@ -200,5 +200,21 @@ namespace back.services
             return null;
         }
 
+        public List<clientDTO> getALLClientDTO()
+        {
+            var listAll = repository.getAll();
+            var returnList = new List<clientDTO>();
+            foreach (var item in listAll)
+            {
+                var user = new clientDTO()
+                {
+                    nickname = item.nickname,
+                    email = item.email,
+                    password = item.password
+                };
+                returnList.Add(user);
+            }
+            return returnList;
+        }
     }
 }

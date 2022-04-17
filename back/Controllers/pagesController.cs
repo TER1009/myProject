@@ -6,10 +6,10 @@ using back.services;
 using back.DTO;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.IO;
-
+using Microsoft.AspNetCore.Http;
 
 namespace back.Controllers
 {
@@ -40,13 +40,15 @@ namespace back.Controllers
             {
                 typeContent = pageContent.typeContent,
                 description = pageContent.description,
+                typePic = pageContent.typePic,
             };
-            if (pageContent.files.Length > 0)
+            if (pageContent.pic.Length > 0)
             {
                 using (var ms = new MemoryStream())
                 {
-                    pageContent.files.CopyTo(ms);
-                    page.files = ms.ToArray();
+                    pageContent.pic.CopyTo(ms);
+                    page.pic = ms.ToArray();
+                    Console.WriteLine(page.pic);
                 }
             }
             if (pagesValidService.check(page))
@@ -80,8 +82,10 @@ namespace back.Controllers
         [HttpGet(nameof(getCharacters))]
         public async Task<IActionResult> getCharacters()
         {
-            Console.WriteLine(dto.getAll()[0]);
-            return Ok(dto.getAll());
+            var list = dto.getAll();
+            Console.WriteLine(dto.getAll()[0].pic.Length);
+            var arr = new int[] { 1, 2, 3, 4, 5 };
+            return Ok(dto.getAll().ToArray());
         }
     }
 }

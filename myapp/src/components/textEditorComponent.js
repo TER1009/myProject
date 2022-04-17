@@ -58,7 +58,8 @@ export default class TextEditorComponent extends Component {
     let data = new FormData();
     data.append("typeContent", this.state.typeContent);
     data.append("description", this.state.text);
-    data.append("files", file);
+    data.append("pic", file);
+    data.append("typePic", file.type);
     console.log(data);
     await fetch("https://localhost:5001/api/pages/postPage", {
       method: "POST",

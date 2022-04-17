@@ -12,6 +12,7 @@ namespace back.models
         public Guid ownerClientId { get; set; }
         public Guid lastEditor { get; set; }
         public string description { get; set; }
-        public byte[] picture { get; set; }
+        public byte[] pic { get; set; }
+        public string typePic { get; set; }
     }
 }

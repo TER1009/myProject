@@ -26,8 +26,8 @@ namespace back.services
                 ownerClientId = contentpage.ownerClientId,
                 lastEditor = contentpage.lastEditor,
                 description = contentpage.description,
-                picture = contentpage.files
-
+                pic = contentpage.pic,
+                typePic = contentpage.typePic,
             };
         }
 
@@ -39,8 +39,9 @@ namespace back.services
                 typeContent = contentpage.typeContent,
                 ownerClientId = contentpage.ownerClientId,
                 lastEditor = contentpage.lastEditor,
-                description = contentpage.description
-
+                description = contentpage.description,
+                pic = contentpage.pic,
+                typePic = contentpage.typePic,
             };
         }
 

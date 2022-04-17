@@ -1,9 +1,19 @@
 .image {
   float: right !important; /* Выравнивание по правому краю  */
   margin: 7px 0 7px 7px !important; /* Отступы вокруг картинки */
+  width: 30%;
+  height: 300px;
 }
 
 .description {
   max-width: 80%;
   height: 200px;
+}
+
+.content {
+  color: white;
+  display: flex;
+  flex-flow: column;
+  width: 80%;
+  margin: 0 1;
 }

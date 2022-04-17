@@ -146,30 +146,35 @@ namespace back.Controllers
             var Jwt = new JwtSecurityTokenHandler();
             var cookie = Request.Cookies["id"];
             var refresh = Request.Cookies["refresh"];
-
-            if (cookie != null && refresh != null)
+            var list = dto.getALLClientDTO();
+            if (list != null)
             {
-                var data = Jwt.ReadJwtToken(refresh);
-                var email = data.Claims.First(claim => claim.Type == "email").Value;
-                var user = dto.getByEmailReturnClientDto(email);
-                Console.WriteLine("user " + user.email);
-                if (user != null) return Ok("true " + user.nickname);
-            }
-            else
-            if (cookie == null && refresh != null)
-            {
-                var data = Jwt.ReadJwtToken(refresh).Claims.First(claim => claim.Type == "email");
-                var user = dto.getByEmailReturnPersonalDataClientDto(data.Value);
-                HttpContext.Response.Cookies.Append("Id", user.token,
-                new CookieOptions
+                if (cookie != null && refresh != null)
                 {
-                    Expires = DateTime.Now.AddMinutes(5),
-                });
-                var userName = dto.getByID(user.id).nickname;
-                return Ok("true " + userName);
+                    var data = Jwt.ReadJwtToken(refresh);
+                    var email = data.Claims.First(claim => claim.Type == "email").Value;
+                    var user = dto.getByEmailReturnClientDto(email);
+                    Console.WriteLine("user " + user.email);
+                    if (user != null) return Ok("true " + user.nickname);
+                }
+                else
+                if (cookie == null && refresh != null)
+                {
+                    var data = Jwt.ReadJwtToken(refresh).Claims.First(claim => claim.Type == "email");
+                    var user = dto.getByEmailReturnPersonalDataClientDto(data.Value);
+                    Console.WriteLine("checkLogin " + user.token);
+                    HttpContext.Response.Cookies.Append("id", user.token,
+                    new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddMinutes(5),
+                    });
+                    var userName = dto.getByID(user.id).nickname;
+                    return Ok("true " + userName);
+                }
+                else
+                if (cookie == null && refresh == null) return BadRequest("false Войдите в аккаунт");
             }
-            else
-            if (cookie == null && refresh == null) return BadRequest("false Войдите в аккаунт");
+            else return BadRequest("Зарегестрируйтесь");
             return BadRequest();
         }
 
