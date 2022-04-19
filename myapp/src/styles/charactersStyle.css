@@ -6,3 +6,8 @@
   margin-top: 5% !important;
   margin-left: -0.5% !important;
 }
+
+.pages {
+  display: flex;
+  flex-flow: column;
+}

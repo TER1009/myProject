@@ -18,6 +18,7 @@ export default class TextEditorComponent extends Component {
       file: "",
       typeContent: "",
       text: "",
+      name: "",
       disable: false,
       redirect: false,
     };
@@ -60,6 +61,7 @@ export default class TextEditorComponent extends Component {
     data.append("description", this.state.text);
     data.append("pic", file);
     data.append("typePic", file.type);
+    data.append("name", this.state.name);
     console.log(data);
     await fetch("https://localhost:5001/api/pages/postPage", {
       method: "POST",
@@ -79,32 +81,16 @@ export default class TextEditorComponent extends Component {
       });
   };
 
-  uploadImg = async () => {
-    let form = new FormData();
-    let file = this.state.file;
-    form.append("files", file);
-    await fetch("https://localhost:5001/api/pages/uploadImg", {
-      method: "POST",
-      headers: {
-        //Accept: "application/json",
-        //"Content-Type": "application/json",
-      },
-      mode: "cors",
-      body: form,
-    })
-      .then((response) => {
-        response.text();
-      })
-      .then((result) => {
-        console.log("editor result " + result);
-      });
+  changeName = (e) => {
+    this.setState({ name: e.target.value });
+    console.log(e.target.value);
   };
 
   render() {
     if (this.state.redirect) return <Navigate to={"/"} />;
     else
       return (
-        <div className="TextEditorComponentv">
+        <div className="TextEditorComponent">
           <Container className="mainEditor">
             <Form className="form">
               <Form.Select
@@ -139,7 +125,17 @@ export default class TextEditorComponent extends Component {
                 />
               )}
             </Container>
+            <Container className="name">
+              <p>Введите имя/название</p>
+              <input
+                maxLength={75}
+                onChange={this.changeName}
+                className="nameInput"
+                type={"text"}
+              />
+            </Container>
             <Container className="containerEditor">
+              <p>Введите описание</p>
               <ReactQuill
                 value={this.state.text}
                 onChange={this.handleChange}

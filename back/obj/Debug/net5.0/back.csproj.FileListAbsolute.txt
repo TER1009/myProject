@@ -187,4 +187,4 @@ D:\GitHub\myProject\back\obj\Debug\net5.0\back.dll
 D:\GitHub\myProject\back\obj\Debug\net5.0\back.pdb
 D:\GitHub\myProject\back\obj\Debug\net5.0\back.genruntimeconfig.cache
 D:\GitHub\myProject\back\obj\Debug\net5.0\ref\back.dll
-D:\GitHub\myProject\back\obj\Debug\net5.0\refint\back.dll
+D:\GitHub\myProject\back\bin\Debug\net5.0\ref\back.dll

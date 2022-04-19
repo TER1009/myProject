@@ -15,6 +15,7 @@ namespace back.DTO
         public string description { get; set; }
         public byte[] pic { get; set; }
         public string typePic { get; set; }
+        public string name { get; set; }
     }
 
     public class contentPageView
@@ -23,6 +24,7 @@ namespace back.DTO
         public string description { get; set; }
         public IFormFile pic { get; set; }
         public string typePic { get; set; }
+        public string name { get; set; }
     }
 
     public class returnContentPageView

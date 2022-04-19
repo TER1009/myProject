@@ -14,5 +14,6 @@ namespace back.models
         public string description { get; set; }
         public byte[] pic { get; set; }
         public string typePic { get; set; }
+        public string name { get; set; }
     }
 }

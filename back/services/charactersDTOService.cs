@@ -28,6 +28,8 @@ namespace back.services
                 description = contentpage.description,
                 pic = contentpage.pic,
                 typePic = contentpage.typePic,
+                name = contentpage.name,
+
             };
         }
 
@@ -42,6 +44,7 @@ namespace back.services
                 description = contentpage.description,
                 pic = contentpage.pic,
                 typePic = contentpage.typePic,
+                name = contentpage.name,
             };
         }
 

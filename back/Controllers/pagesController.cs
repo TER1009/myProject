@@ -41,6 +41,7 @@ namespace back.Controllers
                 typeContent = pageContent.typeContent,
                 description = pageContent.description,
                 typePic = pageContent.typePic,
+                name = pageContent.name,
             };
             if (pageContent.pic.Length > 0)
             {
@@ -82,10 +83,22 @@ namespace back.Controllers
         [HttpGet(nameof(getCharacters))]
         public async Task<IActionResult> getCharacters()
         {
-            var list = dto.getAll();
-            Console.WriteLine(dto.getAll()[0].pic.Length);
-            var arr = new int[] { 1, 2, 3, 4, 5 };
-            return Ok(dto.getAll().ToArray());
+            var list = dto.getAll().Where(x => x.typeContent == "Персонаж");
+            return Ok(list.ToArray());
+        }
+
+        [HttpGet(nameof(getPlaces))]
+        public async Task<IActionResult> getPlaces()
+        {
+            var list = dto.getAll().Where(x => x.typeContent == "Фрукт");
+            return Ok(list.ToArray());
+        }
+
+        [HttpGet(nameof(getFruits))]
+        public async Task<IActionResult> getFruits()
+        {
+            var list = dto.getAll().Where(x => x.typeContent == "Место");
+            return Ok(list.ToArray());
         }
     }
 }
