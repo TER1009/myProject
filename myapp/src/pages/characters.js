@@ -76,17 +76,19 @@ export default class Characters extends Component {
           {this.state.pages != null ? (
             this.state.pages.map((page) => (
               <Container className="page">
-                <Container key={page.id} className={"container " + page.id}>
-                  <div className={"name" + page.name}>{page.name}</div>
-                  <p id={"description"} className={"description" + page.id}>
-                    <img
-                      className="image"
-                      src={"data:" + page.typePic + ";base64," + page.pic}
-                    />
-                    <div className="text"
-                      dangerouslySetInnerHTML={{ __html: page.description }}
-                    />
-                  </p>
+                <div className={"name" + page.name}>{page.name}</div>
+                <Container
+                  id={"description"}
+                  className={"description" + page.id}
+                >
+                  <img
+                    className="image"
+                    src={"data:" + page.typePic + ";base64," + page.pic}
+                  />
+                  <div
+                    className="text"
+                    dangerouslySetInnerHTML={{ __html: page.description }}
+                  />
                 </Container>
               </Container>
             ))

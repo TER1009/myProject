@@ -23,15 +23,16 @@
   width: 30%;
 }
 
-#description {
-  /* display: none; */
-  max-height: 0;
-}
-
 .content {
   color: white;
   display: flex;
   flex-flow: column;
   width: 80%;
   margin: 0 1;
+}
+
+.image,
+.text {
+  display: none     ;
+  max-height: 100%;
 }
