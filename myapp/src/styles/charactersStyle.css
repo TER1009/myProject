@@ -31,8 +31,11 @@
   margin: 0 1;
 }
 
+#description {
+  display: none;
+}
+
 .image,
 .text {
-  display: none     ;
   max-height: 100%;
 }

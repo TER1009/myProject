@@ -40,23 +40,28 @@ export default class Characters extends Component {
 
   componentDidMount() {
     this.getPages();
+    setTimeout(() => {
+      this.collapse();
+    }, 1000);
   }
 
-  // collapse = () => {
-  //   let list = document.querySelectorAll("#description");
-  //   console.log("description" + list.length);
-  //   for (let i = 0; i < list.length; i++) {
-  //     list[i].addEventListener("click", function () {
-  //       this.classList.toggle("active");
-  //       let content = this.nextElementSibling;
-  //       if(content.style.maxHeight){
-  //         content.style.maxHeight = null;
-  //       } else{
-  //         content.style.maxHeight = null;
-  //       }
-  //     });
-  //   }
-  // };
+  collapse = () => {
+    let list = document.querySelectorAll(".page ");
+    console.log(
+      "collapse " + document.querySelectorAll(".page ")[0].firstChild.className
+    );
+    for (let i = 0; i < list.length; i++) {
+      list[i].firstChild.addEventListener("click", function () {
+        this.classList = "active";
+        let content = this.nextSibling;
+        if (content.style.display) {
+          content.style.display = null;
+        } else {
+          content.style.display = "inline";
+        }
+      });
+    }
+  };
 
   render() {
     return (
@@ -67,16 +72,11 @@ export default class Characters extends Component {
             Создать страничку
           </Link>
         </Container>
-        <Container
-          className="pages"
-          onClick={(e) => {
-            alert(e.target.classList);
-          }}
-        >
+        <Container className="pages">
           {this.state.pages != null ? (
             this.state.pages.map((page) => (
-              <Container className="page">
-                <div className={"name" + page.name}>{page.name}</div>
+              <Container key={page.id} className="page">
+                <div className={"name"}>{page.name}</div>
                 <Container
                   id={"description"}
                   className={"description" + page.id}
