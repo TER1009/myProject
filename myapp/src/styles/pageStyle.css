@@ -6,11 +6,12 @@
 
 .description {
   max-width: 80%;
-  height: 100px !important;
+  height: 100px;
 }
 
 #description {
-  display: none;
+  /* display: none; */
+  max-height: 0 ; 
 }
 
 .content {

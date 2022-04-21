@@ -10,4 +10,28 @@
 .pages {
   display: flex;
   flex-flow: column;
+  color: white;
+}
+
+.containerEditor {
+  color: white;
+}
+
+.image {
+  float: right !important; /* Выравнивание по правому краю  */
+  margin: 7px 0 7px 7px !important; /* Отступы вокруг картинки */
+  width: 30%;
+}
+
+#description {
+  /* display: none; */
+  max-height: 0;
+}
+
+.content {
+  color: white;
+  display: flex;
+  flex-flow: column;
+  width: 80%;
+  margin: 0 1;
 }

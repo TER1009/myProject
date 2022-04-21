@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../styles/charactersStyle.css";
 import { Container } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-import Page from "../components/page";
+//import Page from "../components/page";
 
 export default class Characters extends Component {
   constructor(props) {
@@ -42,6 +42,22 @@ export default class Characters extends Component {
     this.getPages();
   }
 
+  // collapse = () => {
+  //   let list = document.querySelectorAll("#description");
+  //   console.log("description" + list.length);
+  //   for (let i = 0; i < list.length; i++) {
+  //     list[i].addEventListener("click", function () {
+  //       this.classList.toggle("active");
+  //       let content = this.nextElementSibling;
+  //       if(content.style.maxHeight){
+  //         content.style.maxHeight = null;
+  //       } else{
+  //         content.style.maxHeight = null;
+  //       }
+  //     });
+  //   }
+  // };
+
   render() {
     return (
       <>
@@ -51,17 +67,28 @@ export default class Characters extends Component {
             Создать страничку
           </Link>
         </Container>
-        <Container className="pages">
+        <Container
+          className="pages"
+          onClick={(e) => {
+            alert(e.target.classList);
+          }}
+        >
           {this.state.pages != null ? (
             this.state.pages.map((page) => (
-              <Page
-                name={page.name}
-                key={page.id}
-                id={page.id}
-                text={page.description}
-                picture={page.pic}
-                type={page.typePic}
-              />
+              <Container className="page">
+                <Container key={page.id} className={"container " + page.id}>
+                  <div className={"name" + page.name}>{page.name}</div>
+                  <p id={"description"} className={"description" + page.id}>
+                    <img
+                      className="image"
+                      src={"data:" + page.typePic + ";base64," + page.pic}
+                    />
+                    <div className="text"
+                      dangerouslySetInnerHTML={{ __html: page.description }}
+                    />
+                  </p>
+                </Container>
+              </Container>
             ))
           ) : (
             <></>

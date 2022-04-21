@@ -28,14 +28,7 @@ export default class Page extends Component {
 
   render() {
     return (
-      <Container
-        key={this.props.key}
-        id={this.props.id}
-        className={"content " + this.props.id}
-      >
-        <Container className="nameContainer">
-          <p className="nameText">{this.props.name}</p>
-        </Container>
+      <Container key={this.props.key} className={"content " + this.props.id}>
         <p
           id={"description"}
           className={"description" + this.props.id}
