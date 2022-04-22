@@ -6,11 +6,11 @@ using System.Linq;
 using back.interfaces;
 
 
-namespace callCenter.repository
+namespace back.repository
 {
     public class userRepository : iBaseRepository<client>
     {
-        
+
         private dbContextFWebsite dbContext;
         public userRepository()
         {
