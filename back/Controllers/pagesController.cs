@@ -90,14 +90,14 @@ namespace back.Controllers
         [HttpGet(nameof(getPlaces))]
         public async Task<IActionResult> getPlaces()
         {
-            var list = dto.getAll().Where(x => x.typeContent == "Фрукт");
+            var list = dto.getAll().Where(x => x.typeContent == "Место");
             return Ok(list.ToArray());
         }
 
         [HttpGet(nameof(getFruits))]
         public async Task<IActionResult> getFruits()
         {
-            var list = dto.getAll().Where(x => x.typeContent == "Место");
+            var list = dto.getAll().Where(x => x.typeContent == "Фрукт");
             return Ok(list.ToArray());
         }
     }

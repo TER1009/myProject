@@ -30,7 +30,7 @@
 .wikitable {
   color: rgb(60, 48, 139);
   text-shadow: none !important;
-  margin-bottom: 30px;
+  margin-bottom: 3%;
 }
 dt {
   flex: 0 0 33.33333%;
@@ -46,4 +46,12 @@ dd {
   flex-wrap: wrap;
   width: fit-content;
   color: white;
+}
+
+.info{
+  margin-top: 5% !important;
+}
+
+.text{
+  margin-top: 1% !important;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../styles/checkLoginStyle.css";
 
 export default class CheckLogin extends Component {
@@ -32,7 +32,12 @@ export default class CheckLogin extends Component {
             (this.state = {
               message: two.substring(0, two.length - 1),
               isLogin: true,
-              exit: false,
+            })
+          );
+        } else if (result.includes(false)) {
+          this.setState(
+            (this.state = {
+              isLogin: false,
             })
           );
         }
@@ -57,15 +62,14 @@ export default class CheckLogin extends Component {
       .then((result) => {
         if (result.includes("true")) {
           console.log("logout" + JSON.stringify(result));
-          this.setState({ exit: true });
+          this.setState({ isLogin: false });
         }
       });
   };
   out = () => {
     this.logOut();
     setTimeout(() => {
-      if (this.state.exit)
-        alert("Вы вышли из аккаунта \nПерезагрузите страницу");
+      window.location.reload();
     }, 500);
   };
 

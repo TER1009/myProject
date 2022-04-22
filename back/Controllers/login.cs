@@ -135,7 +135,7 @@ namespace back.Controllers
                 var user = dto.getByID(checkUser.id);
                 return Ok("true " + user.nickname);
             }
-            else return BadRequest("false");//"please.register"
+            else return BadRequest("false/ Неправильный логин или пароль");//"please.register"
         }
 
         [AllowAnonymous]

@@ -361,7 +361,7 @@ export default class anime extends Component {
             </div>
           </div>
         </Container>
-        <Videoplayer src={url[0]} />
+        <Videoplayer />
       </>
     );
   }

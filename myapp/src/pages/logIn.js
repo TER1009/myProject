@@ -34,31 +34,51 @@ export default class logIn extends Component {
   };
 
   postUser = async () => {
-    let user = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-    let _jsonUser = JSON.stringify(user);
-    console.log(_jsonUser);
-    fetch("https://localhost:5001/api/log/logIn", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      mode: "cors",
-      body: _jsonUser,
-    })
-      .then((response) => response.text())
-      .then((result) => {
-        if (result.includes(true)) {
-          const [back, nickname] = result.split(" ");
-          console.log(nickname.substring(0, nickname.length - 1));
-          let mess = window.confirm("Вы вошли в аккаунт");
-          if (mess || !mess) this.setState((this.state = { redirect: true }));
-        }
-      });
+    console.log(
+      !this.state.email.includes(".") &&
+        !this.state.email.includes("@") &&
+        !(this.state.email.includes("ru") || this.state.email.includes("com"))
+    );
+    if (this.state.email === "" || this.state.password === "") {
+      alert("Поля путстые");
+    } else if (
+      !(
+        this.state.email.includes(".") &&
+        this.state.email.includes("@") &&
+        (this.state.email.includes("ru") || this.state.email.includes("com"))
+      )
+    ) {
+      alert("Неправильный Email");
+    } else {
+      let user = {
+        email: this.state.email,
+        password: this.state.password,
+      };
+      let _jsonUser = JSON.stringify(user);
+      console.log(_jsonUser);
+      fetch("https://localhost:5001/api/log/logIn", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        mode: "cors",
+        body: _jsonUser,
+      })
+        .then((response) => response.text())
+        .then((result) => {
+          if (result.includes(true)) {
+            const [back, nickname] = result.split(" ");
+            console.log(nickname.substring(0, nickname.length - 1));
+            let mess = window.confirm("Вы вошли в аккаунт");
+            if (mess || !mess) this.setState((this.state = { redirect: true }));
+          } else if (result.includes(false)) {
+            const [back, error] = result.split("/");
+            alert(error.substring(0, error.length - 1));
+          }
+        });
+    }
   };
 
   check = () => {
@@ -73,7 +93,6 @@ export default class logIn extends Component {
     else
       return (
         <Container>
-          <CheckLogin />
           <Container className="login">
             <Container className="regform">
               <InputGroup className="inputs">

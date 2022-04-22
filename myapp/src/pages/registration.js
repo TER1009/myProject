@@ -49,47 +49,71 @@ class Registr extends Component {
   };
 
   postUser = async () => {
-    let data = {
-      nickname: this.state.nickname,
-      email: this.state.email,
-      password: this.state.password,
-    };
-    let _jsonUser = JSON.stringify(data);
-    console.log(_jsonUser);
-    fetch("https://localhost:5001/api/log/register", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      mode: "cors",
-      body: _jsonUser,
-    })
-      .then((response) => response.text())
-      .then((result) => {
-        if (result.includes(true))
-          this.setState(
-            (this.state = {
-              text: "Регистрация выполнена \nВойдите в аккаунт",
-              feedback: true,
-              go: true,
-            })
-          );
-        else
-          this.setState(
-            (this.state = {
-              text: result,
-              feedback: false,
-              go: false,
-            })
-          );
-        console.log("registaration " + this.state.text);
-      });
+    if (
+      this.state.email === "" ||
+      this.state.password === "" ||
+      this.state.nickname === ""
+    ) {
+      alert("Поля путстые");
+    } else if (
+      !(
+        this.state.email.includes(".") &&
+        this.state.email.includes("@") &&
+        (this.state.email.includes("ru") || this.state.email.includes("com"))
+      )
+    ) {
+      alert("Неправильный Email");
+    } else if (
+      this.state.nickname.includes(this.state.password) &&
+      this.state.email.includes(this.state.password)
+    ) {
+      alert("Пароль не должен совпадать с логином или почтой");
+    } else if (this.state.password.length < 6) {
+      alert("Длинна пароля должна быть больше 6 символов");
+    } else if (this.state.nickname.length < 6) {
+      alert("Длинна логина должна быть больше 6 символов");
+    } else {
+      let data = {
+        nickname: this.state.nickname,
+        email: this.state.email,
+        password: this.state.password,
+      };
+      let _jsonUser = JSON.stringify(data);
+      console.log(_jsonUser);
+      fetch("https://localhost:5001/api/log/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        mode: "cors",
+        body: _jsonUser,
+      })
+        .then((response) => response.text())
+        .then((result) => {
+          if (result.includes(true))
+            this.setState(
+              (this.state = {
+                text: "Регистрация выполнена \nВойдите в аккаунт",
+                feedback: true,
+                go: true,
+              })
+            );
+          else
+            this.setState(
+              (this.state = {
+                text: result,
+                feedback: false,
+                go: false,
+              })
+            );
+          console.log("registaration " + this.state.text);
+        });
+    }
   };
 
   redirect = () => {
-    console.log("registaration " + this.state.feedback);
     this.postUser();
     console.log("registaration " + this.state.feedback);
     setTimeout(() => {
@@ -98,8 +122,10 @@ class Registr extends Component {
         if (message && this.state.text !== "")
           this.setState((this.state = { userFeedback: true }));
       } else {
-        this.setState((this.state = { userFeedback: false }));
-        alert(this.state.text);
+        if (this.state.text !== "") {
+          this.setState((this.state = { userFeedback: false }));
+          alert(this.state.text);
+        }
       }
     }, 500);
   };
@@ -117,6 +143,7 @@ class Registr extends Component {
               <InputGroup className="inputs">
                 <InputGroup className="nickname">
                   <FormControl
+                    maxLength={75}
                     placeholder="nickname"
                     //aria-label="Username"
                     aria-describedby="basic-addon1"
@@ -125,6 +152,7 @@ class Registr extends Component {
                 </InputGroup>
                 <InputGroup className="email">
                   <FormControl
+                    maxLength={75}
                     placeholder="email"
                     aria-describedby="basic-addon1"
                     onChange={this.changeEmail}
@@ -132,6 +160,7 @@ class Registr extends Component {
                 </InputGroup>
                 <InputGroup className="password">
                   <FormControl
+                    maxLength={75}
                     placeholder="password"
                     aria-describedby="basic-addon1"
                     onChange={this.changePassword}

@@ -1,0 +1,20 @@
+.fruits,
+.places {
+  color: white;
+}
+
+.linkToCreate {
+  margin-top: 5% !important;
+  margin-left: -0.5% !important;
+  margin-bottom: 1%;
+}
+
+.image {
+  float: right !important; /* Выравнивание по правому краю  */
+  margin: 7px 0 7px 7px !important; /* Отступы вокруг картинки */
+  width: 30%;
+}
+
+.page {
+  display: none;
+}

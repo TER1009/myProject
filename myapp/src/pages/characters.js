@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../styles/charactersStyle.css";
 import { Container } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-//import Page from "../components/page";
 
 export default class Characters extends Component {
   constructor(props) {
@@ -13,6 +12,7 @@ export default class Characters extends Component {
     this.state = {
       pages: [],
       get: true,
+      isLogin: false,
     };
   }
 
@@ -38,7 +38,37 @@ export default class Characters extends Component {
     });
   };
 
+  check = async () => {
+    await fetch("https://localhost:5001/api/log/checkLogIn", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      mode: "cors",
+    })
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(result);
+        if (result.includes(true)) {
+          const [one, two] = result.split(" ");
+          this.setState(
+            (this.state = {
+              isLogin: true,
+            })
+          );
+        } else if (result.includes(false))
+          this.setState(
+            (this.state = {
+              isLogin: false,
+            })
+          );
+      });
+  };
+
   componentDidMount() {
+    this.check();
     this.getPages();
     setTimeout(() => {
       this.collapse();
@@ -47,9 +77,6 @@ export default class Characters extends Component {
 
   collapse = () => {
     let list = document.querySelectorAll(".page ");
-    console.log(
-      "collapse " + document.querySelectorAll(".page ")[0].firstChild.className
-    );
     for (let i = 0; i < list.length; i++) {
       list[i].firstChild.addEventListener("click", function () {
         this.classList = "active";
@@ -68,9 +95,13 @@ export default class Characters extends Component {
       <>
         <CheckLogin />
         <Container className="linkToCreate">
-          <Link className="createPage" to={"/createPage"}>
-            Создать страничку
-          </Link>
+          {this.state.isLogin ? (
+            <Link className="createPage" to={"/createPage"}>
+              Создать страничку
+            </Link>
+          ) : (
+            <></>
+          )}
         </Container>
         <Container className="pages">
           {this.state.pages != null ? (
