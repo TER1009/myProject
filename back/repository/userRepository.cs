@@ -5,10 +5,12 @@ using back.db;
 using System.Linq;
 using back.interfaces;
 
-namespace back.repository
+
+namespace callCenter.repository
 {
     public class userRepository : iBaseRepository<client>
     {
+        
         private dbContextFWebsite dbContext;
         public userRepository()
         {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import "../styles/checkLoginStyle.css";
+import Chat from "./chat";
 
 export default class CheckLogin extends Component {
   constructor(props) {
@@ -80,6 +81,7 @@ export default class CheckLogin extends Component {
   render() {
     return (
       <Container className="checkLogin">
+        {/* <Chat /> */}
         {this.state.isLogin ? (
           <Container className="acc">
             <p>{this.state.message}</p>
