@@ -1,6 +1,6 @@
 .checkLogin {
   display: flex;
-  width: 200px !important;
+  width: max-content !important;
   margin-left: 85% !important;
   margin-top: -5% !important;
   color: white;
@@ -9,5 +9,8 @@
 .checkLogin a {
   text-decoration: none;
   position: absolute;
-  /* z-index: 1 !important; */
+}
+
+.acc {
+  width: 100px !important;
 }

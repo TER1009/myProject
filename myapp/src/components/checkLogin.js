@@ -81,7 +81,7 @@ export default class CheckLogin extends Component {
   render() {
     return (
       <Container className="checkLogin">
-        {/* <Chat /> */}
+        <Chat />
         {this.state.isLogin ? (
           <Container className="acc">
             <p>{this.state.message}</p>

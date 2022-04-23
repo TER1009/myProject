@@ -15,7 +15,6 @@ import CreatePage from "./pages/createPage";
 
 function App() {
   return (
-    <Container>
       <BrowserRouter>
         <Header />
         <Routes>
@@ -29,7 +28,6 @@ function App() {
           <Route path="/createPage" element={<CreatePage />} />
         </Routes>
       </BrowserRouter>
-    </Container>
   );
 }
 

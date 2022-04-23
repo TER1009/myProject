@@ -93,16 +93,16 @@ export default class Characters extends Component {
   render() {
     return (
       <>
-        <CheckLogin />
-        <Container className="linkToCreate">
-          {this.state.isLogin ? (
+        <CheckLogin />{" "}
+        {this.state.isLogin ? (
+          <Container className="linkToCreate">
             <Link className="createPage" to={"/createPage"}>
               Создать страничку
-            </Link>
-          ) : (
-            <></>
-          )}
-        </Container>
+            </Link>{" "}
+          </Container>
+        ) : (
+          <React.Fragment></React.Fragment>
+        )}
         <Container className="pages">
           {this.state.pages != null ? (
             this.state.pages.map((page) => (

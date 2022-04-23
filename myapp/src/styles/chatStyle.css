@@ -1,0 +1,51 @@
+.chatMain {
+  color: black;
+  display: flex !important;
+  flex-flow: column;
+  max-width: min-content !important;
+  z-index: 100;
+  margin-right: 5% !important;
+}
+
+.chatBody {
+  border: 3px solid transparent;
+  border-radius: 15px;
+  border-color: white;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: 10% !important;
+  left: 66%;
+  width: 300px;
+  max-width: 300px !important;
+  padding: 1px 1px 1px 1px !important;
+}
+
+.chatButton {
+  margin-right: 50%;
+  width: 50px;
+  color: rgb(0, 119, 255);
+  font-weight: bold;
+  text-shadow: 51px !important;
+}
+
+.panel {
+  width: 300px;
+  border: solid transparent;
+  border-color: rgb(0, 119, 255) !important;
+  border-width: 2px 2px 0px 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.content {
+  width: 100% !important;
+  border: 2px solid transparent;
+  border-color: rgb(0, 119, 255) !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

@@ -7,6 +7,7 @@ namespace back.db
     {
         public DbSet<client> Users { get; set; }
         public DbSet<contentpages> Characters { get; set; }
+        public DbSet<room> Rooms { get; set; }
         public dbContextFWebsite()
         {
             Database.EnsureCreated();   // создаем базу данных при первом обращении

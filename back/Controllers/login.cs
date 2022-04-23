@@ -1,10 +1,6 @@
-using System.Reflection.Metadata;
-using System.Buffers;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -12,15 +8,10 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using back.services;
 using System;
-using System.Net;
 using Microsoft.AspNetCore.Http;
 using back.DTO;
 using back.repository;
-using System.Web;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace back.Controllers
 {

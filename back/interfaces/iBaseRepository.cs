@@ -6,10 +6,10 @@ namespace back.interfaces
 {
     public interface iBaseRepository<T>
     {
-        public void create(T client);
-        public void update(T client);
+        public void create(T item);
+        public void update(T item);
         public List<T> getAll();
         public T getById(Guid id);
-        public void delete(T client);
+        public void delete(T item);
     }
 }
