@@ -14,7 +14,7 @@
   background-color: white;
   display: none;
   position: absolute;
-  top: 10% !important;
+  top: 50px !important;
   left: 66%;
   width: 300px;
   max-width: 300px !important;
@@ -28,8 +28,20 @@
   font-weight: bold;
   text-shadow: 51px !important;
 }
+.chatButton,
+.addIcon,
+.allButton,
+.myButton:hover {
+  cursor: pointer;
+}
+.addIcon {
+  margin-top: 15px;
+}
 
 .panel {
+  color: rgb(0, 119, 255);
+  display: flex;
+  flex-flow: row;
   width: 300px;
   border: solid transparent;
   border-color: rgb(0, 119, 255) !important;
@@ -38,6 +50,7 @@
   border-top-right-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  padding-top: 10px;
 }
 
 .content {
