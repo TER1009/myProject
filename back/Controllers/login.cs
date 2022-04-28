@@ -138,7 +138,8 @@ namespace back.Controllers
             var cookie = Request.Cookies["id"];
             var refresh = Request.Cookies["refresh"];
             var list = dto.getALLClientDTO();
-            if (list != null)
+            Console.WriteLine(list.Count);
+            if (list.Count > 0)
             {
                 if (cookie != null && refresh != null)
                 {
@@ -174,10 +175,11 @@ namespace back.Controllers
         public async Task<IActionResult> logOut()
         {
             var cookie = HttpContext.Request.Cookies["id"];
-            if (cookie != null)
+            var refresh = HttpContext.Request.Cookies["refresh"];
+            if (cookie != null || refresh != null)
             {
-                HttpContext.Response.Cookies.Delete("id");
-                HttpContext.Response.Cookies.Delete("refresh");
+                Response.Cookies.Delete("id");
+                Response.Cookies.Delete("refresh");
                 return Ok("true");
             }
             else return BadRequest("please logIn or register");

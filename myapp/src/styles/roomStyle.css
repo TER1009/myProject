@@ -37,3 +37,8 @@
   border-top-left-radius: 5px !important ;
   border-bottom-left-radius: 5px !important;
 }
+
+.room {
+  display: flex;
+  flex-flow: column;
+}

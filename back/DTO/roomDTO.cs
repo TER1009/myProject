@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using System;
 
 namespace back.DTO
@@ -6,6 +7,7 @@ namespace back.DTO
     {
         public Guid id { get; set; }
         public Guid ownerUserid { get; set; }
+        public string owner { get; set; }
         public string topic { get; set; }
     }
 

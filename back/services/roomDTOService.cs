@@ -21,6 +21,7 @@ namespace back.services
                 id = room.id,
                 ownerUserid = room.ownerUserid,
                 topic = room.topic,
+                owner = room.owner,
             };
         }
 
@@ -31,6 +32,7 @@ namespace back.services
                 id = room.id,
                 ownerUserid = room.ownerUserid,
                 topic = room.topic,
+                owner = room.owner,
             };
         }
 

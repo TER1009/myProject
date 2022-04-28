@@ -6,5 +6,6 @@ namespace back.models
         public Guid id { get; set; }
         public Guid ownerUserid { get; set; }
         public string topic { get; set; }
+        public string owner { get; set; }
     }
 }

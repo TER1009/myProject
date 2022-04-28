@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class chatController : ControllerBase
+    public class chat : ControllerBase
     {
         roomDTOService service = new roomDTOService();
         userDTOService userService = new userDTOService();
@@ -28,6 +29,8 @@ namespace back.Controllers
                 var cookie = Request.Cookies["id"];
                 var refresh = Request.Cookies["refresh"];
                 var jwt = new JwtSecurityTokenHandler();
+                var resu = cookie.GetType().ToString();
+                Console.WriteLine("cookie " + cookie + " refresh " + refresh);
                 if (cookie != null)
                 {
                     id = jwt.ReadJwtToken(cookie).Claims.First(x => x.Type == "id").Value;
@@ -43,21 +46,37 @@ namespace back.Controllers
                     {
                         id = Guid.NewGuid(),
                         ownerUserid = new Guid(id),
-                        topic = room.topic
+                        topic = room.topic,
+                        owner = userService.getByID(new Guid(id)).nickname,
                     };
-                    //service.create(roomNew);
-                    return Ok("true " + roomNew);
+                    service.create(roomNew);
+                    return Ok(roomNew);
                 }
                 else return BadRequest("false");
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
-        [HttpGet(nameof(roomGet))]
-        public async Task<IActionResult> roomGet()
+        [HttpGet(nameof(roomsGet))]
+        public async Task<IActionResult> roomsGet()
+        {
+
+            try
+            {
+                var rooms = service.getAll();
+                return Ok(rooms);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet(nameof(myRoomsGet))]
+        public async Task<IActionResult> myRoomsGet()
         {
 
             return Ok();
