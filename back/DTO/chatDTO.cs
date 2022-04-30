@@ -1,9 +1,8 @@
-
-
 using System;
-namespace back.models
+
+namespace back.DTO
 {
-    public class chat : room
+    public class chatDTO
     {
         public Guid chatId { get; set; }
         public Guid roomId { get; set; }

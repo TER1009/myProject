@@ -1,0 +1,22 @@
+.postMessage {
+  display: flex;
+  flex-flow: row;
+}
+
+.textMessage,
+.postBut {
+  height: 30px !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-right: 5px;
+  margin-left: -25px !important;
+}
+
+.postBut {
+  line-height: 0 !important;
+}
+
+.textMessage {
+  width: 160px !important;
+  margin-right: 30px !important;
+}

@@ -3,7 +3,10 @@ import React, { Component } from "react";
 import { Container, Form } from "react-bootstrap";
 import "../styles/chatStyle.css";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import UpdateIcon from "@mui/icons-material/Update";
 import Room from "./room";
+import ChatDialog from "./chatDialog";
 
 export default class Chat extends Component {
   constructor(props) {
@@ -16,6 +19,8 @@ export default class Chat extends Component {
       online: false,
       update: false,
       timer: "",
+      inroom: false,
+      id: "",
     };
   }
 
@@ -30,7 +35,11 @@ export default class Chat extends Component {
       },
     }).then((response) => {
       response.json().then((result) => {
-        if (result.length > this.state.rooms.length)
+        if (
+          result.length > 0 &&
+          typeof result !== "undefined" &&
+          result.length > this.state.rooms.length
+        )
           this.setState({ rooms: result.reverse(), update: true });
         else this.setState({ update: false });
         console.log(result);
@@ -42,6 +51,10 @@ export default class Chat extends Component {
     await this.setState({ create: _status });
   };
 
+  changeInroom = async () => {
+    this.setState({ inroom: true });
+  };
+
   componentDidUpdate() {
     // let block = document.querySelector(".chatBody");
     // if (block.style.display === "inline" && this.state.online !== true)
@@ -51,6 +64,20 @@ export default class Chat extends Component {
   componentDidMount() {}
 
   componentWillUnmount() {}
+
+  collapse = () => {
+    let blocks = document.querySelectorAll(".room");
+    console.log(blocks.length);
+    if (blocks.length > 0) {
+      blocks.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          this.setState({ id: e.target.parentNode.id });
+          console.log("this log ");
+          this.changeInroom();
+        });
+      });
+    }
+  };
 
   render() {
     return (
@@ -68,10 +95,11 @@ export default class Chat extends Component {
               block.style.display = "inline";
               await this.setState({
                 online: true,
-                timer: setInterval(() => {
-                  this.create();
-                }, 500),
               });
+              this.create();
+              setTimeout(() => {
+                this.collapse();
+              }, 300);
               console.log("online " + this.state.online);
             }
           }}
@@ -80,40 +108,68 @@ export default class Chat extends Component {
         </p>
         <Container style={{ display: "none" }} className="chatBody">
           <Container className="panel">
-            <Container className="add">
-              <AddCircleOutlineIcon
-                className="addIcon"
+            {!this.state.inroom ? (
+              <React.Fragment>
+                <AddCircleOutlineIcon
+                  className="addIcon"
+                  onClick={() => {
+                    this.setState({ create: true });
+                  }}
+                />
+                <UpdateIcon
+                  className="updateIcon"
+                  onClick={() => {
+                    this.create();
+                    setTimeout(() => {
+                      this.collapse();
+                    }, 300);
+                  }}
+                />
+              </React.Fragment>
+            ) : (
+              <ArrowBackIcon
+                className="backIcon"
                 onClick={() => {
-                  this.setState({ create: true });
+                  this.setState({ inroom: false });
+                  setTimeout(() => {
+                    this.collapse();
+                  }, 300);
                 }}
               />
-            </Container>
-            <Container className="all">
-              <p className="allButton">Все комнаты</p>
-            </Container>
-            <Container className="my">
-              <p className="myButton">Мои комнаты</p>
-            </Container>
+            )}
           </Container>
           <Container className="content">
             {this.state.create ? (
               <React.Fragment>
-                <Room onCreate={this.changeCreate} create={true} />
+                <Room
+                  onCreate={this.changeCreate}
+                  create={true}
+                  update={this.create}
+                />
               </React.Fragment>
             ) : (
               <React.Fragment />
             )}
-            {this.state.online &&
-              this.state.rooms.map((room) => (
-                <React.Fragment>
-                  <Room
-                    create={false}
-                    key={room.id}
-                    topic={room.topic}
-                    owner={room.owner}
-                  />
-                </React.Fragment>
-              ))}
+            {!this.state.inroom ? (
+              this.state.online && this.state.rooms.length > 0 ? (
+                this.state.rooms.map((room) => (
+                  <React.Fragment key={room.id}>
+                    <Room
+                      changeInroom={this.changeInroom}
+                      create={false}
+                      key={room.id}
+                      id={room.id}
+                      topic={room.topic}
+                      owner={room.owner}
+                    />
+                  </React.Fragment>
+                ))
+              ) : (
+                <React.Fragment>Здесь пока ничего нет</React.Fragment>
+              )
+            ) : (
+              <ChatDialog idroom={this.state.id} />
+            )}
           </Container>
         </Container>
       </Container>

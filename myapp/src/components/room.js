@@ -21,7 +21,7 @@ export default class Room extends Component {
     });
   };
 
-  create = async () => {
+  createR = async () => {
     let _body = { topic: this.state.topic };
     await fetch("https://localhost:5001/api/chat/roomCreate", {
       method: "POST",
@@ -50,14 +50,30 @@ export default class Room extends Component {
             placeholder="Тема комнаты"
             onChange={this.changeTopic}
           />
-          <Button className="accept" variant="primary" onClick={this.create}>
+          <Button
+            className="accept"
+            variant="primary"
+            onClick={async () => {
+              this.createR();
+              this.props.update();
+            }}
+          >
             Создать
+          </Button>
+          <Button
+            className="cancel"
+            onClick={() => {
+              this.props.onCreate(false);
+              this.props.update();
+            }}
+          >
+            Отмена
           </Button>
         </Container>
       );
     else
       return (
-        <Container id={this.props.id} className="room">
+        <Container key={this.props.id} id={this.props.id} className="room">
           <div id={this.props.id} className="topic">
             {this.props.topic}
           </div>

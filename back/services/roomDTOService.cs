@@ -19,7 +19,7 @@ namespace back.services
             return new room()
             {
                 id = room.id,
-                ownerUserid = room.ownerUserid,
+                ownerId = room.ownerId,
                 topic = room.topic,
                 owner = room.owner,
             };
@@ -30,7 +30,7 @@ namespace back.services
             return new roomDTO()
             {
                 id = room.id,
-                ownerUserid = room.ownerUserid,
+                ownerId = room.ownerId,
                 topic = room.topic,
                 owner = room.owner,
             };

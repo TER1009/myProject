@@ -18,23 +18,23 @@ namespace back.repository
         }
         public void create(client client)
         {
-            dbContext.Users.Add(client);
+            dbContext.Clients.Add(client);
             dbContext.SaveChanges();
         }
         public void update(client client)
         {
-            dbContext.Users.Update(client);
+            dbContext.Clients.Update(client);
             dbContext.SaveChanges();
         }
         public List<client> getAll()
         {
-            return dbContext.Users.ToList();
+            return dbContext.Clients.ToList();
         }
 
         public client getById(Guid id)
         {
             var result = new client();
-            var list = dbContext.Users.ToList();
+            var list = dbContext.Clients.ToList();
             foreach (var user in list)
                 if (user.id == id)
                 {
@@ -47,7 +47,7 @@ namespace back.repository
         public client getById(string tokenRefresh)
         {
             var result = new client();
-            var list = dbContext.Users.ToList();
+            var list = dbContext.Clients.ToList();
             foreach (var user in list)
                 if (user.tokenRefresh == tokenRefresh)
                 {
@@ -58,7 +58,7 @@ namespace back.repository
         }
         public void delete(client client)
         {
-            dbContext.Users.Remove(client);
+            dbContext.Clients.Remove(client);
             dbContext.SaveChanges();
 
         }

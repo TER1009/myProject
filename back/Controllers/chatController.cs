@@ -19,6 +19,7 @@ namespace back.Controllers
     {
         roomDTOService service = new roomDTOService();
         userDTOService userService = new userDTOService();
+        chatServise chatServise = new chatServise();
 
         [HttpPost(nameof(roomCreate))]
         public async Task<IActionResult> roomCreate([FromBody] roomView room)
@@ -45,11 +46,18 @@ namespace back.Controllers
                     var roomNew = new roomDTO()
                     {
                         id = Guid.NewGuid(),
-                        ownerUserid = new Guid(id),
+                        ownerId = new Guid(id),
                         topic = room.topic,
                         owner = userService.getByID(new Guid(id)).nickname,
                     };
+                    var newChat = new chatDTO()
+                    {
+                        chatId = Guid.NewGuid(),
+                        roomId = roomNew.id,
+                        messages = "",
+                    };
                     service.create(roomNew);
+                    chatServise.create(newChat);
                     return Ok(roomNew);
                 }
                 else return BadRequest("false");
@@ -80,6 +88,13 @@ namespace back.Controllers
         {
 
             return Ok();
+        }
+
+        [HttpGet(nameof(getMessages))]
+        public async Task<IActionResult> getMessages([FromBody] roomId room)
+        {
+            var _messagese = chatServise.getById(new Guid(room.id)).messages;
+            return Ok(_messagese);
         }
     }
 }

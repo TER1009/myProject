@@ -5,9 +5,11 @@ namespace back.db
 {
     public class dbContextFWebsite : DbContext
     {
-        public DbSet<client> Users { get; set; }
+        public DbSet<user> Users { get; set; }
+        public DbSet<client> Clients { get; set; }
         public DbSet<contentpages> Characters { get; set; }
         public DbSet<room> Rooms { get; set; }
+        public DbSet<chat> Chats { get; set; }
         public dbContextFWebsite()
         {
             Database.EnsureCreated();   // создаем базу данных при первом обращении

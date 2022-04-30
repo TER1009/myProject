@@ -1,0 +1,11 @@
+.message {
+  color: black;
+  font-size: 9pt;
+  border: 2px solid transparent;
+  border-color: rgb(0, 119, 255) !important;
+  border-radius: 5px ;
+  margin-top: 5px;
+  margin-left: -25px !important;
+  width: 150px !important;
+  float: left;
+}

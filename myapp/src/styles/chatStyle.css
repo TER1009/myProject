@@ -34,8 +34,11 @@
 .myButton:hover {
   cursor: pointer;
 }
-.addIcon {
-  margin-top: 15px;
+.addIcon,
+.updateIcon,
+.backIcon {
+  margin-bottom: 5px !important;
+  margin-right: 20px;
 }
 
 .panel {
@@ -54,6 +57,8 @@
 }
 
 .content {
+  color: rgb(0, 119, 255) !important;
+  font-weight: bold;
   width: 100% !important;
   border: 2px solid transparent;
   border-color: rgb(0, 119, 255) !important;
@@ -61,4 +66,8 @@
   border-top-right-radius: 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.backIcon {
+  margin-top: -5px;
 }
