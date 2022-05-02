@@ -171,7 +171,11 @@ export default class Chat extends Component {
                 <React.Fragment>Здесь пока ничего нет</React.Fragment>
               )
             ) : (
-              <ChatDialog online={this.state.online} idroom={this.state.id} />
+              <ChatDialog
+                name={this.props.name}
+                online={this.state.online}
+                idroom={this.state.id}
+              />
             )}
           </Container>
         </Container>

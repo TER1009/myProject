@@ -133,6 +133,27 @@ namespace back.Controllers
             else return BadRequest("please logIn or register");
         }
 
+        [HttpGet(nameof(getRole))]
+        public IActionResult getRole()
+        {
+            var Jwt = new JwtSecurityTokenHandler();
+            var cookie = Request.Cookies["id"];
+            var list = dto.getALLClientDTO();
+            if (list.Count > 0)
+            {
+                if (cookie != null)
+                {
+                    var data = Jwt.ReadJwtToken(cookie);
+                    var id = data.Claims.First(claim => claim.Type == "id").Value;
+                    var user = dto.getByIDPersonalDataDTO(new Guid(id));
+                    if (user != null) return Ok("true " + user.role);
+                    else return BadRequest("false error");
+                }
+                else return BadRequest("please logIn or register");
+            }
+            else return BadRequest("please logIn or register");
+        }
+
         private string generateJwtToken(ClaimsIdentity claims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

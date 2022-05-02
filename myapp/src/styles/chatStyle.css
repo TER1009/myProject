@@ -2,9 +2,9 @@
   color: black;
   display: flex !important;
   flex-flow: column;
-  max-width: min-content !important;
   z-index: 100;
   margin-right: 5% !important;
+  max-height: 600px !important;
 }
 
 .chatBody {
@@ -15,10 +15,12 @@
   display: none;
   position: absolute;
   top: 50px !important;
-  left: 66%;
-  width: 300px;
-  max-width: 300px !important;
+  left: 53%;
+  width: 500px !important;
+  max-width: 400px !important;
   padding: 1px 1px 1px 1px !important;
+  
+  
 }
 
 .chatButton {

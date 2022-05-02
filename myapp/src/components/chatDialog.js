@@ -38,7 +38,7 @@ export default class ChatDialog extends Component {
     this.setState({ textMessage: e.target.value });
   };
 
-  postMessage = async () => {
+  postMessage = async (e) => {
     let _time = new Date();
     let _body = {
       roomId: this.props.idroom,
@@ -90,6 +90,7 @@ export default class ChatDialog extends Component {
           {true ? (
             this.state.messagges.map((message) => (
               <Message
+                userName={this.props.name}
                 key={message.id}
                 time={message.time}
                 name={message.name}
@@ -107,7 +108,14 @@ export default class ChatDialog extends Component {
             className="textMessage"
             onChange={this.changeMessage}
           />
-          <Button className="postBut" onClick={this.postMessage}>
+          <Button
+            className="postBut"
+            onClick={(e) => {
+              this.postMessage();
+              let block = document.querySelector(".textMessage");
+              block.value = "";
+            }}
+          >
             Отправить
           </Button>
         </Container>

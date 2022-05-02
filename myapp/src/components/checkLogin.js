@@ -82,14 +82,16 @@ export default class CheckLogin extends Component {
   render() {
     return (
       <Container className="checkLogin">
-        <Chat />
         {this.state.isLogin ? (
-          <Container className="acc">
-            <p>{this.state.message}</p>
-            <Link onClick={this.out} to={"/"}>
-              Выйти из аккаунта
-            </Link>
-          </Container>
+          <React.Fragment>
+            <Chat name={this.state.message} />
+            <Container className="acc">
+              <p>{this.state.message}</p>
+              <Link onClick={this.out} to={"/"}>
+                Выйти из аккаунта
+              </Link>
+            </Container>
+          </React.Fragment>
         ) : (
           <Container className="acc">
             <Link to={"/login"}>Войти в аккаунт</Link>

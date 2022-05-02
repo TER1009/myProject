@@ -11,10 +11,19 @@ export default class Message extends Component {
   }
 
   render() {
+    {
+      console.log(this.props.userName === this.props.name);
+    }
     return (
-      <Container className="message">
-        <p className="date">{this.props.time}</p>
-        <p className="nick">{this.props.name}</p>
+      <Container
+        className={
+          this.props.userName === this.props.name ? "myMessage" : "message"
+        }
+      >
+        <Container className="dataMessage">
+          <p className="date">{this.props.time}</p>
+          <p className="nick">{this.props.name}</p>
+        </Container>
         <p className="bodyMessage">{this.props.text}</p>
       </Container>
     );

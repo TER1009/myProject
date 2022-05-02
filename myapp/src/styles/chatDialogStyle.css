@@ -26,3 +26,13 @@
   width: 160px !important;
   margin-right: 30px !important;
 }
+
+.bodyChatDialog {
+  display: flex;
+  flex-flow: column !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 500px !important;
+  scrollbar-width: thin; /* "auto" или "thin"  */
+  scrollbar-color: rgb(0, 119, 255) white; /* плашка скролла и дорожка */
+}

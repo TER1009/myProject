@@ -27,13 +27,15 @@ export default class Characters extends Component {
     }).then((response) => {
       console.log("getPages " + response);
       response.json().then((result) => {
-        this.setState(
-          (this.state = {
-            pages: result,
-            get: false,
-          })
-        );
-        console.log(this.state.pages[0].name);
+        if (result.length > 0) {
+          this.setState(
+            (this.state = {
+              pages: result,
+              get: false,
+            })
+          );
+          console.log(this.state.pages[0].name);
+        }
       });
     });
   };
