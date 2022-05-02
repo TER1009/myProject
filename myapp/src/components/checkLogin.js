@@ -29,6 +29,7 @@ export default class CheckLogin extends Component {
         console.log(result);
         if (result.includes(true)) {
           const [one, two] = result.split(" ");
+          console.log("checkLogin " + result);
           this.setState(
             (this.state = {
               message: two.substring(0, two.length - 1),

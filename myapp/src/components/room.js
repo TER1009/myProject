@@ -64,7 +64,6 @@ export default class Room extends Component {
             className="cancel"
             onClick={() => {
               this.props.onCreate(false);
-              this.props.update();
             }}
           >
             Отмена

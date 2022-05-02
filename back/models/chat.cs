@@ -1,12 +1,12 @@
-
-
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace back.models
 {
-    public class chat : room
+    public class chat
     {
-        public Guid chatId { get; set; }
+        public Guid id { get; set; }
         public Guid roomId { get; set; }
-        public string messages { get; set; }
     }
 }

@@ -36,9 +36,9 @@ namespace back.services
             }
             else return null;
         }
-        public chatDTO getById(Guid id)
+        public chatDTO getByRoomId(Guid id)
         {
-            return repository.returnDTO(repository.getById(id));
+            return repository.returnDTO(repository.getByRoomId(id));
         }
         public void delete(chatDTO item)
         {

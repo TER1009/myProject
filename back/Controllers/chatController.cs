@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,11 @@ namespace back.Controllers
     [ApiController]
     public class chat : ControllerBase
     {
-        roomDTOService service = new roomDTOService();
+        roomDTOService roomService = new roomDTOService();
         userDTOService userService = new userDTOService();
         chatServise chatServise = new chatServise();
+        chatMessagesService chatMessagesService = new chatMessagesService();
+        messageServise messageServise = new messageServise();
 
         [HttpPost(nameof(roomCreate))]
         public async Task<IActionResult> roomCreate([FromBody] roomView room)
@@ -28,20 +31,9 @@ namespace back.Controllers
             {
                 var id = "";
                 var cookie = Request.Cookies["id"];
-                var refresh = Request.Cookies["refresh"];
                 var jwt = new JwtSecurityTokenHandler();
-                var resu = cookie.GetType().ToString();
-                Console.WriteLine("cookie " + cookie + " refresh " + refresh);
+                id = jwt.ReadJwtToken(cookie).Claims.First(x => x.Type == "id").Value;
                 if (cookie != null)
-                {
-                    id = jwt.ReadJwtToken(cookie).Claims.First(x => x.Type == "id").Value;
-                }
-                else
-                {
-                    var email = jwt.ReadJwtToken(cookie).Claims.First(x => x.Type == "email").Value;
-                    id = userService.getByEmailReturnPersonalDataClientDto(email).id.ToString();
-                }
-                if (cookie != null || refresh != null)
                 {
                     var roomNew = new roomDTO()
                     {
@@ -54,9 +46,8 @@ namespace back.Controllers
                     {
                         chatId = Guid.NewGuid(),
                         roomId = roomNew.id,
-                        messages = "",
                     };
-                    service.create(roomNew);
+                    roomService.create(roomNew);
                     chatServise.create(newChat);
                     return Ok(roomNew);
                 }
@@ -64,7 +55,7 @@ namespace back.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message + " " + ex);
             }
         }
 
@@ -74,7 +65,7 @@ namespace back.Controllers
 
             try
             {
-                var rooms = service.getAll();
+                var rooms = roomService.getAll();
                 return Ok(rooms);
             }
             catch (Exception ex)
@@ -90,11 +81,44 @@ namespace back.Controllers
             return Ok();
         }
 
-        [HttpGet(nameof(getMessages))]
+        [HttpPost(nameof(getMessages))]
         public async Task<IActionResult> getMessages([FromBody] roomId room)
         {
-            var _messagese = chatServise.getById(new Guid(room.id)).messages;
-            return Ok(_messagese);
+            var chatId = chatServise.getByRoomId(new Guid(room.id)).chatId;
+            var messagesId = chatMessagesService.getMessagesId(chatId);
+            var messages = new List<messageDTO>();
+            Console.WriteLine("message! " + messagesId.Count);
+            for (var i = 0; i < messagesId.Count; i++)
+            {
+                Console.WriteLine(@$"message! {i} " + messagesId[i].messageId);
+                messages.Add(messageServise.getById(messagesId[i].messageId));
+            }
+            return Ok(messages);
+        }
+
+        [HttpPost(nameof(postMessage))]
+        public async Task<IActionResult> postMessage([FromBody] messageDTO message)
+        {
+            var cookie = Request.Cookies["id"];
+            var id = "";
+            if (cookie != null)
+            {
+                var jwt = new JwtSecurityTokenHandler();
+                id = jwt.ReadJwtToken(cookie).Claims.First(x => x.Type == "id").Value;
+                userService.getByID(new Guid(id));
+            }
+            var chat = chatServise.getByRoomId(new Guid(message.roomId));
+            message.id = Guid.NewGuid();
+            message.ownerId = id;
+            message.name = userService.getByID(new Guid(id)).nickname;
+
+            chatMessagesService.create(new chatMessagesDTO()
+            {
+                messageId = message.id,
+                chatId = chat.chatId,
+            });
+            messageServise.create(message);
+            return Ok();
         }
     }
 }

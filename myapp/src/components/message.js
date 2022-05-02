@@ -13,18 +13,8 @@ export default class Message extends Component {
   render() {
     return (
       <Container className="message">
-        <p className="date">
-          {this.state.time.getDate() +
-            "." +
-            this.state.time.getMonth() +
-            "." +
-            this.state.time.getFullYear() +
-            " " +
-            this.state.time.getHours() +
-            ":" +
-            this.state.time.getMinutes()}
-        </p>
-        <p className="nick">{this.props.nick}</p>
+        <p className="date">{this.props.time}</p>
+        <p className="nick">{this.props.name}</p>
         <p className="bodyMessage">{this.props.text}</p>
       </Container>
     );

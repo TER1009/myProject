@@ -34,21 +34,24 @@ export default class Chat extends Component {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-      response.json().then((result) => {
-        if (
-          result.length > 0 &&
-          typeof result !== "undefined" &&
-          result.length > this.state.rooms.length
-        )
-          this.setState({ rooms: result.reverse(), update: true });
-        else this.setState({ update: false });
-        console.log(result);
-      });
+      if (response.status == 200)
+        response.json().then((result) => {
+          if (
+            result.length > 0 &&
+            typeof result !== "undefined" &&
+            result.length > this.state.rooms.length
+          )
+            this.setState({ rooms: result.reverse(), update: true });
+          else this.setState({ update: false });
+          console.log(result);
+        });
     });
   };
 
   changeCreate = async (_status) => {
     await this.setState({ create: _status });
+    this.create();
+    this.collapse();
   };
 
   changeInroom = async () => {
@@ -85,21 +88,21 @@ export default class Chat extends Component {
         <p
           className="chatButton"
           onClick={async () => {
+            await this.create();
             let block = document.querySelector(".chatBody");
             if (block.style.display !== "none") {
               block.style.display = "none";
-              await this.setState({ online: false });
+              this.setState({ online: false });
               clearInterval(this.state.timer);
               console.log("online " + this.state.online);
             } else {
               block.style.display = "inline";
-              await this.setState({
+              this.setState({
                 online: true,
               });
-              this.create();
               setTimeout(() => {
                 this.collapse();
-              }, 300);
+              }, 400);
               console.log("online " + this.state.online);
             }
           }}
@@ -168,7 +171,7 @@ export default class Chat extends Component {
                 <React.Fragment>Здесь пока ничего нет</React.Fragment>
               )
             ) : (
-              <ChatDialog idroom={this.state.id} />
+              <ChatDialog online={this.state.online} idroom={this.state.id} />
             )}
           </Container>
         </Container>

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using back.models;
 
 namespace back.DTO
 {
@@ -6,6 +8,5 @@ namespace back.DTO
     {
         public Guid chatId { get; set; }
         public Guid roomId { get; set; }
-        public string messages { get; set; }
     }
 }

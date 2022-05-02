@@ -13,6 +13,12 @@
 }
 
 .postBut {
+  /* Убрирает обводку  */
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
   line-height: 0 !important;
 }
 

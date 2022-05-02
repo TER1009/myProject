@@ -31,36 +31,6 @@ namespace back.Controllers
             _service = service;
         }
 
-        // [AllowAnonymous]
-        // [HttpPost(nameof(register))]
-        //[HttpPost]
-        // public async Task<IActionResult> register([FromBody] clientDTO userDto)
-        // {
-        //     // var claims = new List<Claim>
-        //     // {
-        //     //     new Claim(ClaimTypes.Name, "name")
-        //     // };
-        //     // var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //     // var principal = new ClaimsPrincipal(identity);
-        //     // var props = new AuthenticationProperties();
-        //     // HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props).Wait();
-        //     var cookie = Request.Cookies["userid"];
-        //     if (cookie == null)
-        //     {
-        //         HttpContext.Response.Cookies.Append("userId", generateJwtToken(new ClaimsIdentity(new[] {
-        //      new Claim("id", "123".ToString()),
-        //        })).ToString(),
-        //            new CookieOptions
-        //            {
-        //                Expires = DateTime.Now.AddSeconds(10),
-        //                MaxAge = TimeSpan.FromSeconds(10),
-        //                Secure = true
-        //            });
-        //         return Ok("create");
-        //     }
-        //     else return Ok("not null");
-        // }
-
         [AllowAnonymous]
         [HttpPost(nameof(register))]
         //[HttpPost]
@@ -72,10 +42,10 @@ namespace back.Controllers
 
             if (message == null)
             {
+                Console.WriteLine("login! " + message);
                 clientPersonalDataDTO dataDTO = new clientPersonalDataDTO();
                 dataDTO.id = Guid.NewGuid();
                 dataDTO.token = generateJwtToken(new ClaimsIdentity(new[] { new Claim("id", dataDTO.id.ToString()), })).ToString();
-                dataDTO.tokenRefresh = generateJwtToken(new ClaimsIdentity(new[] { new Claim("email", userDto.email) })).ToString();
                 dataDTO.role = "user";
                 dto.create(userDto, dataDTO);
                 return Ok("true");
@@ -116,13 +86,8 @@ namespace back.Controllers
                 HttpContext.Response.Cookies.Append("id", checkUser.token,
                            new CookieOptions
                            {
-                               Expires = DateTime.Now.AddMinutes(5),
+                               Expires = DateTime.Now.AddDays(1),
                            });
-                HttpContext.Response.Cookies.Append("refresh", checkUser.tokenRefresh,
-                    new CookieOptions
-                    {
-                        Expires = DateTime.Now.AddDays(1)
-                    });
                 var user = dto.getByID(checkUser.id);
                 return Ok("true " + user.nickname);
             }
@@ -136,35 +101,19 @@ namespace back.Controllers
         {
             var Jwt = new JwtSecurityTokenHandler();
             var cookie = Request.Cookies["id"];
-            var refresh = Request.Cookies["refresh"];
             var list = dto.getALLClientDTO();
             Console.WriteLine(list.Count);
             if (list.Count > 0)
             {
-                if (cookie != null && refresh != null)
+                if (cookie != null)
                 {
-                    var data = Jwt.ReadJwtToken(refresh);
-                    var email = data.Claims.First(claim => claim.Type == "email").Value;
-                    var user = dto.getByEmailReturnClientDto(email);
-                    Console.WriteLine("user " + user.email);
+                    var data = Jwt.ReadJwtToken(cookie);
+                    var id = data.Claims.First(claim => claim.Type == "id").Value;
+                    var user = dto.getByID(new Guid(id));
                     if (user != null) return Ok("true " + user.nickname);
                 }
                 else
-                if (cookie == null && refresh != null)
-                {
-                    var data = Jwt.ReadJwtToken(refresh).Claims.First(claim => claim.Type == "email");
-                    var user = dto.getByEmailReturnPersonalDataClientDto(data.Value);
-                    Console.WriteLine("checkLogin " + user.token);
-                    HttpContext.Response.Cookies.Append("id", user.token,
-                    new CookieOptions
-                    {
-                        Expires = DateTime.Now.AddMinutes(5),
-                    });
-                    var userName = dto.getByID(user.id).nickname;
-                    return Ok("true " + userName);
-                }
-                else
-                if (cookie == null && refresh == null) return BadRequest("false Войдите в аккаунт");
+                if (cookie == null) return BadRequest("false Войдите в аккаунт");
             }
             else return BadRequest("Зарегестрируйтесь");
             return BadRequest();
@@ -175,8 +124,7 @@ namespace back.Controllers
         public async Task<IActionResult> logOut()
         {
             var cookie = HttpContext.Request.Cookies["id"];
-            var refresh = HttpContext.Request.Cookies["refresh"];
-            if (cookie != null || refresh != null)
+            if (cookie != null)
             {
                 Response.Cookies.Delete("id");
                 Response.Cookies.Delete("refresh");

@@ -58,6 +58,5 @@ namespace back.services
             if (_room == null) return null;
             else return returnDTO(_room);
         }
-
     }
 }

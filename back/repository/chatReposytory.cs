@@ -35,8 +35,22 @@ namespace back.repository
             var list = getAll();
             if (list.Count() > 0)
             {
-                var _chat = list.First(x => x.roomId == id);
+                var _chat = list.First(x => x.id == id);
                 if (_chat != null) return _chat;
+                else return null;
+            }
+            else return null;
+        }
+        public chat getByRoomId(Guid id)
+        {
+            var list = getAll();
+            if (list.Count() > 0)
+            {
+                var _chat = list.First(x => x.roomId == id);
+                if (_chat != null)
+                {
+                    return _chat;
+                }
                 else return null;
             }
             else return null;
@@ -51,9 +65,8 @@ namespace back.repository
         {
             return new chat()
             {
-                chatId = _chat.chatId,
+                id = _chat.chatId,
                 roomId = _chat.roomId,
-                messages = _chat.messages,
             };
         }
 
@@ -61,9 +74,8 @@ namespace back.repository
         {
             return new chatDTO()
             {
-                chatId = _chat.chatId,
+                chatId = _chat.id,
                 roomId = _chat.roomId,
-                messages = _chat.messages,
             };
         }
     }

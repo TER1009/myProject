@@ -21,37 +21,43 @@ namespace back.services
         }
 
 
-        public client returnEntity(clientDTO clientDTO)
+        public client returnEntity(clientDTO _clientDTO)
         {
-            returnClient.nickname = clientDTO.nickname;
-            returnClient.email = clientDTO.email;
-            returnClient.password = clientDTO.password;
-            return returnClient;
+            return new client()
+            {
+                nickname = _clientDTO.nickname,
+                email = _clientDTO.email,
+                password = _clientDTO.password,
+            };
         }
 
-        public client returnEntity(clientPersonalDataDTO clientDTO)
+        public client returnEntity(clientPersonalDataDTO _clientDTO)
         {
-            returnClient.token = clientDTO.token;
-            returnClient.role = clientDTO.role;
-            returnClient.id = clientDTO.id;
-            returnClient.tokenRefresh = clientDTO.tokenRefresh;
-            return returnClient;
+            return new client()
+            {
+                id = _clientDTO.id,
+                role = _clientDTO.role,
+                token = _clientDTO.token,
+            };
         }
 
-        public clientDTO returnDTO(client client)
+        public clientDTO returnDTO(client _client)
         {
-            clientDTO.email = client.email;
-            clientDTO.password = client.password;
-            clientDTO.nickname = client.nickname;
-            return clientDTO;
+            return new clientDTO()
+            {
+                nickname = _client.nickname,
+                email = _client.email,
+                password = _client.password,
+            };
         }
-        public clientPersonalDataDTO returnPersonalDTO(client client)
+        public clientPersonalDataDTO returnPersonalDTO(client _client)
         {
-            clientPersonalDTO.token = client.token;
-            clientPersonalDTO.role = client.role;
-            clientPersonalDTO.id = client.id;
-            clientPersonalDTO.tokenRefresh = client.tokenRefresh;
-            return clientPersonalDTO;
+            return new clientPersonalDataDTO()
+            {
+                id = _client.id,
+                role = _client.role,
+                token = _client.token,
+            };
         }
 
 
@@ -83,7 +89,6 @@ namespace back.services
                     token = list[i].token,
                     id = list[i].id,
                     role = list[i].role,
-                    tokenRefresh = list[i].tokenRefresh
                 };
                 listDTO.Add(item);
             }
@@ -92,24 +97,7 @@ namespace back.services
 
         public clientDTO getByID(Guid id)
         {
-            user user = repository.getById(id);
-            return new clientDTO
-            {
-                email = user.email,
-                nickname = user.nickname,
-                password = user.password
-            };
-        }
-
-        public clientDTO getByID(string token)
-        {
-            user user = repository.getById(token);
-            return new clientDTO
-            {
-                email = user.email,
-                nickname = user.nickname,
-                password = user.password
-            };
+            return returnDTO(repository.getById(id));
         }
 
         public clientPersonalDataDTO getByEmailReturnPersonalDataClientDto(string email)
@@ -123,7 +111,6 @@ namespace back.services
                     returnUser.id = user.id;
                     returnUser.role = user.role;
                     returnUser.token = user.token;
-                    returnUser.tokenRefresh = user.tokenRefresh;
                     break;
                 }
             }
@@ -155,7 +142,6 @@ namespace back.services
                 token = user.token,
                 role = user.role,
                 id = user.id,
-                tokenRefresh = user.tokenRefresh
             };
         }
 
@@ -167,7 +153,6 @@ namespace back.services
                 token = user.token,
                 role = user.role,
                 id = user.id,
-                tokenRefresh = user.tokenRefresh
             };
         }
 
@@ -178,9 +163,15 @@ namespace back.services
 
         public void create(clientDTO clientDTO, clientPersonalDataDTO clientPersonalDataDTO)
         {
-            var client = returnEntity(clientDTO);
-            client = returnEntity(clientPersonalDataDTO);
-            repository.create(client);
+            repository.create(new client()
+            {
+                nickname = clientDTO.nickname,
+                email = clientDTO.email,
+                password = clientDTO.password,
+                id = clientPersonalDataDTO.id,
+                token = clientPersonalDataDTO.token,
+                role = clientPersonalDataDTO.role,
+            });
         }
 
         public clientPersonalDataDTO checkUser(clientDTO userDto)

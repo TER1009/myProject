@@ -33,28 +33,30 @@ namespace back.repository
 
         public client getById(Guid id)
         {
-            var result = new client();
-            var list = dbContext.Clients.ToList();
+            var list = getAll();
             foreach (var user in list)
+            {
                 if (user.id == id)
                 {
-                    result = user;
-                    break;
-                };
-            return result;
+                    return user;
+                }
+            }
+            return null;
         }
 
-        public client getById(string tokenRefresh)
+        public client getById(string token)
         {
             var result = new client();
             var list = dbContext.Clients.ToList();
             foreach (var user in list)
-                if (user.tokenRefresh == tokenRefresh)
+            {
+                if (string.Equals(token, user.token))
                 {
-                    result = user;
-                    break;
-                };
-            return result;
+                    Console.WriteLine(user.nickname);
+                    return user;
+                }
+            }
+            return null;
         }
         public void delete(client client)
         {

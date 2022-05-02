@@ -16,19 +16,19 @@ namespace back.repository
         }
         public void create(contentpages page)
         {
-            dbContext.Characters.Add(page);
+            dbContext.Contentpages.Add(page);
             dbContext.SaveChanges();
         }
 
         public void update(contentpages page)
         {
-            dbContext.Characters.Update(page);
+            dbContext.Contentpages.Update(page);
             dbContext.SaveChanges();
         }
 
         public List<contentpages> getAll()
         {
-            return dbContext.Characters.ToList();
+            return dbContext.Contentpages.ToList();
         }
 
         public contentpages getById(Guid id)
@@ -42,7 +42,7 @@ namespace back.repository
         }
 
         public void delete(contentpages page){
-            dbContext.Characters.Remove(page);
+            dbContext.Contentpages.Remove(page);
             dbContext.SaveChanges();
         }
     }
