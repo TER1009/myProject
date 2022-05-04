@@ -86,6 +86,36 @@ export default class TextEditorComponent extends Component {
     console.log(e.target.value);
   };
 
+  changePage = async () => {
+    let file = this.state.file;
+    let data = new FormData();
+    data.append("typeContent", this.state.typeContent);
+    data.append("description", this.state.text);
+    data.append("pic", file);
+    data.append("typePic", file.type);
+    data.append("name", this.state.name);
+    await fetch("https://localhost:5001/api/pages/postPage", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        //Accept: "application/json",
+        //"Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: data,
+    })
+      .then((response) => response.text())
+      .then((result) => {
+        //if (result.includes(true))
+        this.setState((this.state = { redirect: true }));
+        console.log("editor " + result);
+      });
+
+    setTimeout(() => {
+      this.props.setChange();
+    }, 500);
+  };
+
   render() {
     if (this.state.redirect) return <Navigate to={"/"} />;
     else
@@ -97,6 +127,7 @@ export default class TextEditorComponent extends Component {
                 className="typeContent"
                 aria-label="Default select example"
                 onChange={this.Select}
+                value={this.props.change ? this.props.type : ""}
               >
                 <option>Выберите тип страницы</option>
                 <option value="Персонаж">Персонаж</option>
@@ -120,13 +151,15 @@ export default class TextEditorComponent extends Component {
               ) : (
                 <img
                   className="img"
-                  src={this.state.urlFile}
+                  src={this.props.change ? this.props.file : this.state.urlFile}
                   alt="Загрузите картинку!"
                 />
               )}
             </Container>
             <Container className="name">
-              <p>Введите имя/название</p>
+              <p>
+                {this.props.change ? this.props.name : "Введите имя/название"}
+              </p>
               <input
                 maxLength={75}
                 onChange={this.changeName}
@@ -137,13 +170,15 @@ export default class TextEditorComponent extends Component {
             <Container className="containerEditor">
               <p>Введите описание</p>
               <ReactQuill
-                value={this.state.text}
+                value={this.props.change ? this.props.text : this.state.text}
                 onChange={this.handleChange}
                 modules={modules}
               />
             </Container>
             <Container className="post">
-              <Button onClick={this.postPage}>Сохранить</Button>
+              <Button onClick={this.postPage}>
+                {this.props.change ? "Изменить" : "Сохранить"}
+              </Button>
             </Container>
           </Container>
         </div>

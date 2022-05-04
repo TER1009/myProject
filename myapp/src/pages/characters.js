@@ -113,17 +113,15 @@ export default class Characters extends Component {
     return (
       <>
         <CheckLogin />
-        {this.state.isLogin ? (
+        {this.state.isLogin && (
           <Container className="linkToCreate">
             <Link className="createPage" to={"/createPage"}>
               Создать страничку
             </Link>{" "}
           </Container>
-        ) : (
-          <React.Fragment></React.Fragment>
         )}
         <Container className="pages">
-          {this.state.pages != null ? (
+          {this.state.pages != null &&
             this.state.pages.map((page) => (
               <Container key={page.id} className="page">
                 <div className={"name"}>{page.name}</div>
@@ -149,10 +147,7 @@ export default class Characters extends Component {
                   </div>
                 </Container>
               </Container>
-            ))
-          ) : (
-            <></>
-          )}
+            ))}
         </Container>
       </>
     );

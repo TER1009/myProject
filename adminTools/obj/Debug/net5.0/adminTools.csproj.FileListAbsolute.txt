@@ -35,4 +35,4 @@ D:\GitHub\myProject\adminTools\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebT
 D:\GitHub\myProject\adminTools\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 D:\GitHub\myProject\adminTools\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\GitHub\myProject\adminTools\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-D:\GitHub\myProject\adminTools\obj\Debug\net5.0\refint\adminTools.dll
+D:\GitHub\myProject\adminTools\bin\Debug\net5.0\ref\adminTools.dll
