@@ -78,8 +78,8 @@ namespace back.Controllers
         public IActionResult logIn([FromBody] clientDTO userDto)
         {
             var cookie = Request.Cookies["id"];
-            var refresh = Request.Cookies["refresh"];
             var checkUser = dto.checkUser(userDto);
+            Console.WriteLine("logIn! " + checkUser);
             if (checkUser != null)
             {
                 Console.WriteLine("???????");

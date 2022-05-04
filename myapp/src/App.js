@@ -13,8 +13,7 @@ import Header from "./components/header";
 import "./styles/App.css";
 import CreatePage from "./pages/createPage";
 import AdminPage from "./pages/adminPage";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [role, setRole] = useState("");
@@ -28,11 +27,12 @@ function App() {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-      if (response.status == 200)
+      console.log(response.statusText);
+      if (response.status === 200)
         response.json().then((result) => {
           console.log("app " + result);
-          const [one, two] = result.split(" ");
-          setRole(two);
+          if (result.substring("admin")) setRole("admin");
+          else setRole("user");
         });
     });
   };
@@ -54,11 +54,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/reg" element={<Registr />} />
         <Route path="/createPage" element={<CreatePage />} />
-        {role === "admin" ? (
-          <Route path="/admin" element={<AdminPage />} />
-        ) : (
-          <React.Fragment></React.Fragment>
-        )}
+        {role === "admin" && <Route path="/admin" element={<AdminPage />} />}
       </Routes>
     </BrowserRouter>
   );

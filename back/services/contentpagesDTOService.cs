@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Drawing;
 using System.Collections.Generic;
 using System;
@@ -62,6 +63,10 @@ namespace back.services
                 list2.Add(returnDTO(list[i]));
             }
             return list2;
+        }
+        public contentPagesDTO getById(Guid id)
+        {
+            return getAll().First(page => page.id == id);
         }
 
     }

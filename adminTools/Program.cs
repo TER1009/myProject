@@ -38,15 +38,15 @@ namespace adminTools
                     var id = Guid.NewGuid();
                     var token = generateJwtToken(new ClaimsIdentity(new[] { new Claim("id", id.ToString()), })).ToString();//generateJwtToken(new ClaimsIdentity(new[] { new Claim("id", id.ToString()), })).ToString()
                     string role = "admin";
-                    var command = new Npgsql.NpgsqlCommand(@"INSERT INTO public.""Users"" VALUES ( @id, @token, @tokenRefresh, @role, @nickname, @email, @password)", connection);
+                    var command = new Npgsql.NpgsqlCommand(@$"INSERT INTO public.""Users""(id, nickname, email, password, token, role) VALUES(@id, @nickname, @email, @password, @token, @role); ", connection);
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@token", token);
-                    command.Parameters.AddWithValue("@tokenRefresh", " ");
-                    command.Parameters.AddWithValue("@role", role);
                     command.Parameters.AddWithValue("@nickname", login);
-                    command.Parameters.AddWithValue("@email", id);
+                    command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@password", password);
+                    command.Parameters.AddWithValue("@token", token);
+                    command.Parameters.AddWithValue("@role", role);
                     command.ExecuteNonQuery();
+                    command.Dispose();
                     connection.Close();
                     Console.WriteLine("Account create...");
                 }
@@ -54,6 +54,7 @@ namespace adminTools
             catch (System.Exception ex)
             {
                 Console.WriteLine("Connecting failed... " + ex.Message);
+                Console.WriteLine(ex);
             }
         }
 
@@ -74,3 +75,9 @@ namespace adminTools
         }
     }
 }
+
+
+// INSERT INTO public."Users"(
+// 	id, nickname, email, password, "Discriminator", token, "tokenRefresh", role)
+// 	VALUES ("1", "2", "3", "4", "5", "6", "7", "8");
+// 0d9c16f9-c424-40cf-9c54-380ceddaf801

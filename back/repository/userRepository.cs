@@ -8,7 +8,7 @@ using back.interfaces;
 
 namespace back.repository
 {
-    public class userRepository : iBaseRepository<client>
+    public class userRepository : iBaseRepository<user>
     {
 
         private dbContextFWebsite dbContext;
@@ -16,22 +16,23 @@ namespace back.repository
         {
             dbContext = new dbContextFWebsite();
         }
-        public void create(client client)
+        public void create(user client)
         {
-            dbContext.Clients.Add(client);
+            dbContext.Users.Add(client);
             dbContext.SaveChanges();
         }
-        public void update(client client)
+        public void update(user client)
         {
-            dbContext.Clients.Update(client);
+            dbContext.Users.Update(client);
             dbContext.SaveChanges();
         }
-        public List<client> getAll()
+        public List<user> getAll()
         {
-            return dbContext.Clients.ToList();
+            return dbContext.Users.ToList();
         }
 
-        public client getById(Guid id)
+
+        public user getById(Guid id)
         {
             var list = getAll();
             foreach (var user in list)
@@ -44,10 +45,10 @@ namespace back.repository
             return null;
         }
 
-        public client getById(string token)
+        public user getById(string token)
         {
-            var result = new client();
-            var list = dbContext.Clients.ToList();
+            var result = new user();
+            var list = dbContext.Users.ToList();
             foreach (var user in list)
             {
                 if (string.Equals(token, user.token))
@@ -58,9 +59,9 @@ namespace back.repository
             }
             return null;
         }
-        public void delete(client client)
+        public void delete(user client)
         {
-            dbContext.Clients.Remove(client);
+            dbContext.Users.Remove(client);
             dbContext.SaveChanges();
 
         }

@@ -39,3 +39,7 @@
 .text {
   max-height: 100%;
 }
+
+.reportBut {
+  cursor: pointer;
+}

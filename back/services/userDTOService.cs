@@ -7,7 +7,7 @@ namespace back.services
 {
     public class userDTOService
     {
-        private readonly client returnClient;
+        private readonly user returnClient;
         private readonly clientPersonalDataDTO clientPersonalDTO;
         private readonly clientDTO clientDTO;
 
@@ -15,15 +15,15 @@ namespace back.services
 
         public userDTOService()
         {
-            returnClient = new client();
+            returnClient = new user();
             clientPersonalDTO = new clientPersonalDataDTO();
             clientDTO = new clientDTO();
         }
 
 
-        public client returnEntity(clientDTO _clientDTO)
+        public user returnEntity(clientDTO _clientDTO)
         {
-            return new client()
+            return new user()
             {
                 nickname = _clientDTO.nickname,
                 email = _clientDTO.email,
@@ -31,9 +31,9 @@ namespace back.services
             };
         }
 
-        public client returnEntity(clientPersonalDataDTO _clientDTO)
+        public user returnEntity(clientPersonalDataDTO _clientDTO)
         {
-            return new client()
+            return new user()
             {
                 id = _clientDTO.id,
                 role = _clientDTO.role,
@@ -41,7 +41,7 @@ namespace back.services
             };
         }
 
-        public clientDTO returnDTO(client _client)
+        public clientDTO returnDTO(user _client)
         {
             return new clientDTO()
             {
@@ -50,7 +50,7 @@ namespace back.services
                 password = _client.password,
             };
         }
-        public clientPersonalDataDTO returnPersonalDTO(client _client)
+        public clientPersonalDataDTO returnPersonalDTO(user _client)
         {
             return new clientPersonalDataDTO()
             {
@@ -136,7 +136,7 @@ namespace back.services
 
         public clientPersonalDataDTO getByIDPersonalDataDTO(Guid id)
         {
-            client user = repository.getById(id);
+            user user = repository.getById(id);
             return new clientPersonalDataDTO
             {
                 token = user.token,
@@ -147,7 +147,7 @@ namespace back.services
 
         public clientPersonalDataDTO getByIDPersonalDataDTO(string id)
         {
-            client user = repository.getById(id);
+            user user = repository.getById(id);
             return new clientPersonalDataDTO
             {
                 token = user.token,
@@ -156,14 +156,14 @@ namespace back.services
             };
         }
 
-        public void create(client client)
+        public void create(user client)
         {
             repository.create(client);
         }
 
         public void create(clientDTO clientDTO, clientPersonalDataDTO clientPersonalDataDTO)
         {
-            repository.create(new client()
+            repository.create(new user()
             {
                 nickname = clientDTO.nickname,
                 email = clientDTO.email,
@@ -176,18 +176,15 @@ namespace back.services
 
         public clientPersonalDataDTO checkUser(clientDTO userDto)
         {
-            if (userDto != null)
-            {
-                var result = new clientPersonalDataDTO();
+            var result = new clientPersonalDataDTO();
 
-                var listAll = repository.getAll();
-                foreach (var item in listAll)
-                {
-                    if (string.Equals(item.email, userDto.email) && string.Equals(item.password, userDto.password))
-                        return returnPersonalDTO(item);
-                }
+            var listAll = repository.getAll();
+            Console.WriteLine(listAll.Count);
+            foreach (var item in listAll)
+            {
+                if (string.Equals(item.email, userDto.email) && string.Equals(item.password, userDto.password))
+                    return returnPersonalDTO(item);
             }
-            else return null;
             return null;
         }
 

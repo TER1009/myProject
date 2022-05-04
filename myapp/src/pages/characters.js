@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../styles/charactersStyle.css";
 import { Container } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
+import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 
 export default class Characters extends Component {
   constructor(props) {
@@ -25,7 +26,6 @@ export default class Characters extends Component {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-      console.log("getPages " + response);
       response.json().then((result) => {
         if (result.length > 0) {
           this.setState(
@@ -92,10 +92,27 @@ export default class Characters extends Component {
     }
   };
 
+  report = async (e) => {
+    let _body = { pageId: e.target.id };
+    console.log("report! " + _body);
+    await fetch("https://localhost:5001/api/report/reportPost", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(_body),
+    }).then((response) => {
+      console.log("getPages " + response);
+      response.json().then((result) => {});
+    });
+  };
+
   render() {
     return (
       <>
-        <CheckLogin />{" "}
+        <CheckLogin />
         {this.state.isLogin ? (
           <Container className="linkToCreate">
             <Link className="createPage" to={"/createPage"}>
@@ -122,6 +139,14 @@ export default class Characters extends Component {
                     className="text"
                     dangerouslySetInnerHTML={{ __html: page.description }}
                   />
+                  <div
+                    className={"reportBut"}
+                    id={page.id}
+                    onClick={this.report}
+                  >
+                    <ReportGmailerrorredIcon />
+                    report
+                  </div>
                 </Container>
               </Container>
             ))

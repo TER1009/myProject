@@ -3,6 +3,9 @@
   width: 80% !important;
   height: 100% !important;
 }
+.ql-editor {
+  color: black !important;
+}
 
 .quill {
   background-color: white !important;
