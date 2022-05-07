@@ -116,11 +116,12 @@ export default class World extends Component {
       list[i].addEventListener("click", function () {
         this.classList = "active";
         let content = this.nextSibling;
-        if (content.style.display && content !== null) {
-          content.style.display = null;
-        } else {
-          content.style.display = "inline";
-        }
+        if (content != null)
+          if (content.style.display && content !== null) {
+            content.style.display = null;
+          } else {
+            content.style.display = "inline";
+          }
       });
     }
   };
