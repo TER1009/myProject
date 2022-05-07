@@ -10,7 +10,7 @@ namespace back.DTO
 
         public Guid id { get; set; }
         public string typeContent { get; set; }
-        public Guid ownerClientId { get; set; }
+        public Guid ownerId { get; set; }
         public Guid lastEditor { get; set; }
         public string description { get; set; }
         public byte[] pic { get; set; }
@@ -31,7 +31,7 @@ namespace back.DTO
     {
         public Guid id { get; set; }
         public string typeContent { get; set; }
-        public Guid ownerClientId { get; set; }
+        public Guid ownerId { get; set; }
         public Guid lastEditor { get; set; }
         public string description { get; set; }
         public IFormFile pic { get; set; }

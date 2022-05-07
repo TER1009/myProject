@@ -63,7 +63,7 @@ namespace back.Controllers
                     Console.WriteLine("HERE " + refresh);
                     var data = Jwt.ReadJwtToken(refresh).Claims.First(claim => claim.Type == "email");
                     var user = userDto.getByEmailReturnPersonalDataClientDto(data.Value);
-                    page.ownerClientId = user.id;
+                    page.ownerId = user.id;
                     page.lastEditor = user.id;
                 }
                 else
@@ -71,7 +71,7 @@ namespace back.Controllers
                     var Jwt = new JwtSecurityTokenHandler();
                     var data = Jwt.ReadJwtToken(cookie).Claims.First(claim => claim.Type == "id");
                     var user = userDto.getByIDPersonalDataDTO(new Guid(data.Value));
-                    page.ownerClientId = user.id;
+                    page.ownerId = user.id;
                     page.lastEditor = user.id;
                 }
                 dto.create(page);
@@ -99,6 +99,21 @@ namespace back.Controllers
         {
             var list = dto.getAll().Where(x => x.typeContent == "Фрукт");
             return Ok(list.ToArray());
+        }
+
+        [HttpPost(nameof(deletePage))]
+        public async Task<IActionResult> deletePage([FromBody] string id)
+        {
+            // try
+            // {
+
+            // }
+            // catch (System.Exception ex)
+            // {
+            //     return BadRequest(ex.Message);
+            // }
+            dto.deleteById(new Guid(id));
+            return Ok();
         }
     }
 }

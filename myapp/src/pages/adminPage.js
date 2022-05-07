@@ -11,7 +11,7 @@ export default class AdminPage extends Component {
     this.state = {
       pages: [],
       change: false,
-      pageId,
+      pageId: "",
     };
   }
 
@@ -39,6 +39,32 @@ export default class AdminPage extends Component {
         }
       });
     });
+  };
+
+  _deletePage = async (e) => {
+    await fetch("https://localhost:5001/api/pages/deletePage", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(e.target.id),
+    }).then((response) => {
+      response.json().then((result) => {
+        //console.log(typeof result);
+        if (typeof result === "object" && result.length > 0) {
+          console.log(typeof result);
+          this.setState({
+            pages: result,
+          });
+          console.log(this.state.pages[0].name);
+        }
+      });
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 350);
   };
 
   componentDidMount() {
@@ -98,7 +124,11 @@ export default class AdminPage extends Component {
                   >
                     Изменить
                   </Button>
-                  <Button id={page.id} className="deleteBut">
+                  <Button
+                    id={page.id}
+                    onClick={this._deletePage}
+                    className="deleteBut"
+                  >
                     Удалить
                   </Button>
                 </Container>

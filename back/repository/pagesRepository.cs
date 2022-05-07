@@ -41,8 +41,16 @@ namespace back.repository
             return null;
         }
 
-        public void delete(contentpages page){
+        public void delete(contentpages page)
+        {
             dbContext.Contentpages.Remove(page);
+            dbContext.SaveChanges();
+        }
+
+        public void deleteById(Guid id)
+        {
+            var _page = dbContext.Contentpages.First(page => page.id == id);
+            dbContext.Contentpages.Remove(_page);
             dbContext.SaveChanges();
         }
     }

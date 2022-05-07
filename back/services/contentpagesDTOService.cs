@@ -24,7 +24,7 @@ namespace back.services
             {
                 id = contentpage.id,
                 typeContent = contentpage.typeContent,
-                ownerClientId = contentpage.ownerClientId,
+                ownerId = contentpage.ownerId,
                 lastEditor = contentpage.lastEditor,
                 description = contentpage.description,
                 pic = contentpage.pic,
@@ -40,7 +40,7 @@ namespace back.services
             {
                 id = contentpage.id,
                 typeContent = contentpage.typeContent,
-                ownerClientId = contentpage.ownerClientId,
+                ownerId = contentpage.ownerId,
                 lastEditor = contentpage.lastEditor,
                 description = contentpage.description,
                 pic = contentpage.pic,
@@ -69,5 +69,9 @@ namespace back.services
             return getAll().First(page => page.id == id);
         }
 
+        public void deleteById(Guid id)
+        {
+            repository.deleteById(id);
+        }
     }
 }
