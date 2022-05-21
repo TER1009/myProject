@@ -48,7 +48,9 @@ export default class Videoplayer extends Component {
               <iframe
                 width="640"
                 height="384"
-                src={this.state.path}
+                //src={this.state.path}
+                
+                src = {"https://r10102.kujo-jotaro.com/onepiece/1.480.15a61c3af95c5b8c.mp4?hash1=e7150937404738fef9315f038fee34d0"}
                 frameBorder="0"
                 scrolling="no"
                 allowFullScreen

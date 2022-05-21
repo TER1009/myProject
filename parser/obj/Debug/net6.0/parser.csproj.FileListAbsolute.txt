@@ -1,0 +1,17 @@
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\parser.exe
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\parser.deps.json
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\parser.runtimeconfig.json
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\parser.dll
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\parser.pdb
+C:\Users\Ladav\Desktop\parser\bin\Debug\net6.0\AngleSharp.dll
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.csproj.AssemblyReference.cache
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.AssemblyInfoInputs.cache
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.AssemblyInfo.cs
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.csproj.CoreCompileInputs.cache
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.csproj.CopyComplete
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.dll
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\refint\parser.dll
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.pdb
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\parser.genruntimeconfig.cache
+C:\Users\Ladav\Desktop\parser\obj\Debug\net6.0\ref\parser.dll
