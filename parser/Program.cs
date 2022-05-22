@@ -9,9 +9,10 @@ string url = "https://jut.su/oneepiece/episode-1.html";
 var config = Configuration.Default.WithDefaultLoader();
 var context = BrowsingContext.New(config);
 var doc = await context.OpenAsync(url);
-var attrs = doc.QuerySelectorAll("video")[0].Attributes;
+var attrs = doc.QuerySelectorAll("video")[0].InnerHtml;
+Console.WriteLine(attrs);
 
-foreach (var attr in attrs)
-{
-    Console.WriteLine(attr.Name);
-}
+// foreach (var attr in attrs)
+// {
+//     Console.WriteLine(attr.Name);
+// }

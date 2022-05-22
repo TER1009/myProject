@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ladav\\Desktop\\parser\\parser.csproj": {}
+    "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\parser\\parser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ladav\\Desktop\\parser\\parser.csproj": {
+    "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\parser\\parser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ladav\\Desktop\\parser\\parser.csproj",
+        "projectUniqueName": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\parser\\parser.csproj",
         "projectName": "parser",
-        "projectPath": "C:\\Users\\Ladav\\Desktop\\parser\\parser.csproj",
-        "packagesPath": "C:\\Users\\Ladav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ladav\\Desktop\\parser\\obj\\",
+        "projectPath": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\parser\\parser.csproj",
+        "packagesPath": "C:\\Users\\Slava\\.nuget\\packages\\",
+        "outputPath": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\parser\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ladav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Slava\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
