@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {}
+    "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {}
   },
   "projects": {
-    "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {
+    "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
+        "projectUniqueName": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
         "projectName": "back",
-        "projectPath": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
-        "packagesPath": "C:\\Users\\Ladav\\.nuget\\packages\\",
-        "outputPath": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\obj\\",
+        "projectPath": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
+        "packagesPath": "C:\\Users\\Slava\\.nuget\\packages\\",
+        "outputPath": "D:\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ladav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Slava\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

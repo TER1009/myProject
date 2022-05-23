@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import Mycard from "../components/card";
 import CheckLogin from "./../components/checkLogin";
+import "../styles/homestyle.css";
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class Home extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <>
+        <React.Fragment>
           <CheckLogin />
           <Container className="main">
             <Container className="tags">
@@ -62,7 +63,7 @@ export default class Home extends Component {
               Лайн и настала Великая Эра Пиратов!
             </p>
           </Container>
-        </>
+        </React.Fragment>
       );
     }
   }

@@ -3,6 +3,13 @@
   color: white;
 }
 
+.fruits p,
+.places p {
+
+  width: 200px;
+  cursor: pointer;
+}
+
 .linkToCreate {
   margin-top: 5% !important;
   margin-left: -0.5% !important;

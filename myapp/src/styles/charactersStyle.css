@@ -11,6 +11,8 @@
   display: flex;
   flex-flow: column;
   color: white;
+  padding-top: 100px;
+  width: 70%;
 }
 
 .containerEditor {
@@ -42,4 +44,19 @@
 
 .reportBut {
   cursor: pointer;
+}
+
+.main{
+  display: flex;
+  flex-flow: column-reverse nowrap;
+}
+
+.pageContent{
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  width: 70%;
+}
+
+.image{
+  margin-right: 1000px !important;
 }

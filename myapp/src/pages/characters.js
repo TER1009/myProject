@@ -111,45 +111,49 @@ export default class Characters extends Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <CheckLogin />
-        {this.state.isLogin && (
-          <Container className="linkToCreate">
-            <Link className="createPage" to={"/createPage"}>
-              Создать страничку
-            </Link>{" "}
-          </Container>
-        )}
-        <Container className="pages">
-          {this.state.pages != null &&
-            this.state.pages.map((page) => (
-              <Container key={page.id} className="page">
-                <div className={"name"}>{page.name}</div>
-                <Container
-                  id={"description"}
-                  className={"description" + page.id}
-                >
-                  <img
-                    className="image"
-                    src={"data:" + page.typePic + ";base64," + page.pic}
-                  />
-                  <div
-                    className="text"
-                    dangerouslySetInnerHTML={{ __html: page.description }}
-                  />
-                  <div
-                    className={"reportBut"}
-                    id={page.id}
-                    onClick={this.report}
+        <Container className="main">
+          {this.state.isLogin && (
+            <Container className="linkToCreate">
+              <Link className="createPage" to={"/createPage"}>
+                Создать страничку
+              </Link>{" "}
+            </Container>
+          )}
+          <Container className="pages">
+            {this.state.pages != null &&
+              this.state.pages.map((page) => (
+                <Container key={page.id} className="page">
+                  <div className={"name"}>{page.name}</div>
+                  <Container
+                    id={"description"}
+                    className={"description" + page.id}
                   >
-                    <ReportGmailerrorredIcon />
-                    report
-                  </div>
+                    <Container className="pageContent">
+                      <img
+                        className="image"
+                        src={"data:" + page.typePic + ";base64," + page.pic}
+                      />
+                      <div
+                        className="text"
+                        dangerouslySetInnerHTML={{ __html: page.description }}
+                      />
+                    </Container>
+                    <div
+                      className={"reportBut"}
+                      id={page.id}
+                      onClick={this.report}
+                    >
+                      <ReportGmailerrorredIcon />
+                      report
+                    </div>
+                  </Container>
                 </Container>
-              </Container>
-            ))}
+              ))}
+          </Container>
         </Container>
-      </>
+      </React.Fragment>
     );
   }
 }
