@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\myProject\\back\\back.csproj": {}
+    "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\myProject\\back\\back.csproj": {
+    "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\myProject\\back\\back.csproj",
+        "projectUniqueName": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
         "projectName": "back",
-        "projectPath": "D:\\GitHub\\myProject\\back\\back.csproj",
+        "projectPath": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\back.csproj",
         "packagesPath": "C:\\Users\\Ladav\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\myProject\\back\\obj\\",
+        "outputPath": "D:\\Раб стол\\НГИИ\\3КУРС\\GitHub\\myProject\\back\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[0.16.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.2, )"
@@ -93,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

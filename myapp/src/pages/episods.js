@@ -6,10 +6,12 @@ import Videoplayer from "../components/videoplayer";
 import "../styles/episodsstyle.css";
 
 export default class anime extends Component {
+
+
   render() {
     return (
       <>
-      <CheckLogin/>
+        <CheckLogin />
         <Container className="info">
           <dl className="row">
             <dt>Тип</dt>

@@ -10,6 +10,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.Threading;
+using System.Diagnostics.SymbolStore;
+using AngleSharp;
 
 namespace back.Controllers
 {
@@ -21,13 +24,12 @@ namespace back.Controllers
     public class pages : ControllerBase
     {
 
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
         private readonly userService _service;
         private contentPagesDTOService dto = new contentPagesDTOService();
         private userDTOService userDto = new userDTOService();
-        public pages(IConfiguration configuration, userService service)
+        public pages(userService service)
         {
-            _configuration = configuration;
             _service = service;
         }
 
@@ -114,6 +116,29 @@ namespace back.Controllers
             // }
             dto.deleteById(new Guid(id));
             return Ok();
+        }
+
+        [HttpPost(nameof(getVideo))]
+        public async Task<IActionResult> getVideo([FromBody] sources index)
+        {
+            string url = "https://jut.su/oneepiece/episode-1.html";
+            var config = Configuration.Default.WithDefaultLoader();
+            var context = BrowsingContext.New(config);
+            var doc = await context.OpenAsync(url);
+            var items = doc.QuerySelector("video").QuerySelectorAll("source");
+
+            object[] sources = new object[4];
+            int i = 0;
+            foreach (var item in items)
+            {
+                foreach (var atr in item.Attributes)
+                {
+                    if (atr.Name == "src") sources[i] = atr.TextContent;
+                }
+                i++;
+            }
+
+            return Ok(sources);
         }
     }
 }

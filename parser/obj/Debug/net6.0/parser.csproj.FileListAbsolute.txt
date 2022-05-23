@@ -32,3 +32,20 @@ D:\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.dll
 D:\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\ref\parser.dll
 D:\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.pdb
 D:\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.genruntimeconfig.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\parser.exe
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\parser.deps.json
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\parser.runtimeconfig.json
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\parser.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\parser.pdb
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\bin\Debug\net6.0\AngleSharp.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.csproj.AssemblyReference.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.GeneratedMSBuildEditorConfig.editorconfig
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.AssemblyInfoInputs.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.AssemblyInfo.cs
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.csproj.CoreCompileInputs.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.csproj.CopyComplete
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\refint\parser.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.pdb
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\parser.genruntimeconfig.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\parser\obj\Debug\net6.0\ref\parser.dll
