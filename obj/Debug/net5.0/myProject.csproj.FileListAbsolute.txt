@@ -1,0 +1,16 @@
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.exe
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.deps.json
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.runtimeconfig.json
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.runtimeconfig.dev.json
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\bin\Debug\net5.0\myProject.pdb
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.csproj.AssemblyReference.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.AssemblyInfoInputs.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.AssemblyInfo.cs
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.csproj.CoreCompileInputs.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\refint\myProject.dll
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.pdb
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\myProject.genruntimeconfig.cache
+D:\Раб стол\НГИИ\3КУРС\GitHub\myProject\obj\Debug\net5.0\ref\myProject.dll
